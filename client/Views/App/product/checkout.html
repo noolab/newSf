@@ -1,0 +1,50 @@
+<template name="checkout">
+ 
+<section class="shadow_bottom" id="checkout">
+	<div class="container">
+			
+			<h1 class="content-text-review">Checkout</h1>
+			<div class="row">
+				<div class="col-md-9">
+					<div class="row">
+						<div class="col-md-2">Image</div>
+						<div class="col-md-3">Product Name</div>
+						<div class="col-md-2">Shop</div>
+						<div class="col-md-2">Qty</div>
+						<div class="col-md-1">Price</div>
+						<div class="col-md-2">subtotal</div>
+						
+					</div>
+					{{#each getCart}}
+						
+							<div class="row cart">
+								<div class="col-md-2">{{#with getProductInfo id_product}}<a href="/details/{{_id}}"><img src="/upload/{{getImg image}}" class="img-responsive"></a>{{/with}}</div>
+								<div class="col-md-3">{{#with getProductInfo id_product}}{{title}}{{/with}}</div>
+								<div class="col-md-2">{{getShopName shop}}</div>
+								<div class="col-md-2"><input type="text" style="color:black;width:30px;" class="qty" value="{{quantity}}" /></div>
+								<div class="col-md-1">{{#with getProductInfo id_product}}{{price}}{{/with}}</div>
+								<div class="col-md-1">{{subtotal}}</div>
+								<div class="col-md-1"><a href="" class="remove" style="color:black;">X</a></div>
+							</div>
+						
+						
+					{{/each}}
+
+					<div class="row cart">
+						<hr>
+						<div class="col-md-10 total-text"><strong>Total</strong></div>
+						<div class="col-md-2"><strong>{{getTotal}}</strong></div>
+					</div>
+					<div class="row">
+						<hr><div class="pull-right"><input type="button"  class="btn btn-primary" style="background:#000" value="Proceed Order"></div>
+					</div>
+
+				</div>
+				<div class="clearfix"></div>
+				<div class="col-md-3"></div>
+				
+			</div>
+	</div>
+</section>
+
+</template>

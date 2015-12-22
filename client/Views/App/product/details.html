@@ -1,0 +1,185 @@
+<template name="details">
+	{{> myrefine}}
+	<section class="shadow_bottom" id="produst_listing">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<img src="/upload/{{getImg image}}" class="img-responsive" />
+				</div>
+				<div class="col-md-5">
+				 <div class="hold_description">
+
+            <h3 class="bold">{{title}}</h3>
+            <p class="detail-txt">{{_ "Category"}} : {{getCategoryName category}} </p>
+            <p class="detail-txt">{{_ "Brands"}} : <span>{{Brand}}</span></p>
+               <table>
+                  {{#each getParentAttr oldId}}
+                  {{#with getParentDetails parent}}
+                    <tr>
+                      <td><p class="detail-txt"> {{name}} :</p></td>
+                    </tr>
+                    <tr>
+                      {{#each getAllAttributes ../product _id}}
+                        <td>
+                          <img src="/upload/{{getImg productImage}}" id="img_attr"
+                           class="img-responsive" width="30px" height="30px">
+                        </td>     
+                      {{else}}
+                        <td><i>None</i></td>
+                      {{/each}}
+                    </tr>
+                  {{/with}}
+                  {{/each}}
+               </table>
+                  {{#each tags}}
+            <p class="detail-txt">{{getParentTagName parent}} : <span>{{value}}</span> </p>
+                  {{/each}}
+            <p class="detail-txt">{{{description}}}</p>
+
+            </div>
+				</div>
+				<div class="col-md-3">
+					<div class="hold_cart">
+						<div class="col-md-12">
+							<h1 class="bold_big pull-right">{{selected_price}}</h1><br />
+							<h3 class="bold_big pull-right"><i>{{selected_point}} points</i></h3>
+						</div>
+						<div class="col-md-12">
+							<div class="pull-right">
+								<label class="control-label pull-left" id="lbl_add_cart">{{_ "Quantity"}}</label>
+								<div class="form-group pull-left" >
+									<select id="qty">
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+										<option>5</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12" id="contry">
+							<select id="shop">
+								<option value="">{{_ "Shop"}}</option>
+								{{#each shop}}
+								<option value="{{shopid}}">{{getShopname shopid}}</option>
+								{{/each}}
+							</select>
+						</div>
+						<div class="col-md-12">
+							<div class="btn_add_cart col-xs-8 pull-right" id="addtocart">{{_ "ADD TO CART"}}</div>
+						</div>
+						<div class="addtocart_msg" style="margin-top:10px;color:red"></div>
+					</div>
+					<div class="social_share">
+					  <div class="text-center">
+						<a class="fa fa-facebook social-icon" href="#" target="_blank"></a>
+						<a class="fa fa-twitter social-icon" href="#" target="_blank"></a>
+						<a class="fa fa-linkedin social-icon" href="#" target="_blank"></a>
+						<a class="fa fa-google-plus social-icon" href="#" target="_blank"></a>
+					  </div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </section>
+
+    <section class="shadow_bottom" id="produst_listing">
+		<div class="container">
+			<div class="row">
+				<h1 class="content-text-review">{{_ "REVIEWS & FEEDBACKS"}}</h1>
+				<div class="clearfix"></div>
+				<div class="col-md-12">
+					<div class="hold_btn_filter_view">
+						<div class="pull-right">
+							<button class="btn btn-filter-view" type="button" id="input">
+							<i class="fa fa-search"></i> {{_ "FILTER REVIEWS"}}</button>  
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12">
+					
+					{{#if currentUser}}
+						{{>addreview}}
+					{{/if}}
+						{{#each getReviews review filterReview removeFilter}}
+							{{>review}}
+						{{else}}
+	                        <i>No reviews</i>
+						{{/each}}
+
+					<div class="pull-right">
+							<h3 id="show1">{{_ "MORE REVIEWS"}} &nbsp; <i class="fa fa-angle-down"></i></h3>   
+					</div>
+					<div class="wrapper_forum">
+						<div class="filter_set">
+				
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </section>
+
+
+    <section id="produst_listing">
+		<div class="container">
+			<div class="row">
+				<div class="hold_product_detail">
+				  <div class="col-md-12 well">
+					<div class="col-md-12">
+					  <h1>ARTICLE ABOUT</h1>
+					</div>
+
+					{{#each articles title}}
+					  {{>article}}
+					{{else}}
+					  <i>No articles about {{title}}</i>
+					{{/each}}
+				 
+				  </div>
+				</div>
+			</div>
+		</div>
+    </section>
+
+ 
+
+    <section id="forum_question">
+    <div class="container">
+      <div class="hold_product_detail">
+          <div class="col-md-12">
+            <h1>{{_ "RELATED PRODUCTS"}}</h1>
+          </div>
+        <div class="row"></div> 
+        {{>recommendation}}
+     
+      </div>
+    </div>
+  </section>
+
+
+ 
+<script>
+$('.octofilter-link').click(function() {
+    alert( "HOPP" );
+    console.log("TRIGGER");
+    
+
+  });
+    var galleryTop = new Swiper('.gallery-top', {
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        spaceBetween: 10,
+    });
+    var galleryThumbs = new Swiper('.gallery-thumbs', {
+        spaceBetween: 10,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        touchRatio: 0.2,
+        slideToClickedSlide: true
+    });
+    galleryTop.params.control = galleryThumbs;
+    galleryThumbs.params.control = galleryTop;
+</script>
+</template>
