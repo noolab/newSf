@@ -1,0 +1,22 @@
+<template name="producttranslate">
+	<div class="container">
+				<h1>Update Products</h1>
+			<form>
+					<input type="hidden" class="form-control" name="idproduct" id="idproduct" value="{{_id}}">
+					<label>Title</label>
+					<input type="text" class="form-control" name="title" id="title">
+					<label>Description</label>
+					<textarea class="form-control" col="5" row="3" id="description"></textarea>
+					<label>Brand</label>
+					<input type="text" class="form-control" name="brand" id="brand">
+					<label>CODE</label>
+					<input type="text" class="form-control" name="code" id="code">
+					<label>MetaTitle</label>
+					<input type="text" class="form-control" name="metaTitle" id="metaTitle">
+					<label>MetaKey</label>
+					<input type="text" class="form-control" name="metaKey" id="metaKey">
+					<br>
+					<button type="submit" class="btn btn-primary" id="btnAdd">Add</button>
+			</form>
+	</div>
+</template>
