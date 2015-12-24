@@ -8,58 +8,59 @@
 					<div class="swiper-container swiper-container-horizontal">
 						<div style="transition-duration: 0ms; " class="swiper-wrapper">
 							{{#each contents}}
-<div  class="swiper-slide swiper-slide-prev">
-	<a href="/webzinedetails/{{_id}}"><img  class="img-responsive center-block" src="/upload/{{getImg image}}"/></a>
-</div>
+							<div  class="swiper-slide swiper-slide-prev">
+								<a href="/webzinedetails/{{_id}}"><img  class="img-responsive center-block" src="/upload/{{getImg image}}"/></a>			
+								
+
+							</div>
 							{{/each}}
-					
+							<div class="swiper-button-next"></div>
+							<div class="swiper-button-prev"></div>
 						</div>
-						<div class="swiper-button-next"></div>
-						<div class="swiper-button-prev"></div>
+						<!-- /slide swiper -->
 					</div>
-					<!-- /slide swiper -->
+					<script>
+						/* slide swiper */
+						var swiper = new Swiper('.swiper-container', {
+							pagination: '.swiper-pagination',
+							nextButton: '.swiper-button-next',
+							prevButton: '.swiper-button-prev',
+							paginationClickable: false,
+							spaceBetween: 30,
+							centeredSlides: true,
+							autoplay: 5000,
+							autoplayDisableOnInteraction: false
+						});
+					</script>
 				</div>
-				<script>
-					/* slide swiper */
-					var swiper = new Swiper('.swiper-container', {
-						pagination: '.swiper-pagination',
-						nextButton: '.swiper-button-next',
-						prevButton: '.swiper-button-prev',
-						paginationClickable: false,
-						spaceBetween: 30,
-						centeredSlides: true,
-						autoplay: 5000,
-						autoplayDisableOnInteraction: false
-					});
-				</script>
 			</div>
 		</div>
 	</section><!--end section slider-->
-	<div class="hbg">	
-		<section id="trendy_product">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						{{#with list1}}
-					<h1 class="text-center" style="font-weight:bold">{{title}}</h1>
-			
-			<div class="clearout"></div> 
-			<ul id="flexiselDemo2"> 
-				{{#each products}}
-				{{#with getProduct this}}
-				<li><a href="{{pathFor 'details' id=_id}}"><img src="/upload/{{getImg image}}" style="width:170px;height:170px;" /></a> 
-				</li>
-				{{/with}}
-				{{/each}}                                                                          
-			</ul>
-						{{/with}}
+		<div class="hbg">	
+			<section id="trendy_product">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							{{#with list1}}
+							<h1 class="text-center" style="font-weight:bold">{{title}}</h1>
+
+							<div class="clearout"></div> 
+							<ul id="flexiselDemo2"> 
+								{{#each products}}
+								{{#with getProduct this}}
+								<li><a href="{{pathFor 'details' id=_id}}"><img src="/upload/{{getImg image}}" style="width:170px;height:170px;" /></a> 
+								</li>
+								{{/with}}
+								{{/each}}                                                                          
+							</ul>
+							{{/with}}
+						</div>
 					</div>
 				</div>
-			</div>
-		</section><!-- end trendy product -->
-		<script type="text/javascript">
+			</section><!-- end trendy product -->
+			<script type="text/javascript">
 
-			
+
 				$("#flexiselDemo2").flexisel({
 					enableResponsiveBreakpoints: true,
 					responsiveBreakpoints: { 
@@ -79,32 +80,32 @@
 				});
 
 				
-			
+
 			</script>		
 
 
-		<section id="best_selling_product">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						{{#with list2}}
-					<h1 class="text-center" style="font-weight:bold">{{title}}</h1>
-			
-			<div class="clearout"></div> 
-			<ul id="flexiselDemo4"> 
-				{{#each products}}
-				{{#with getProduct this}}
-				<li><a href="{{pathFor 'details' id=_id}}"><img src="/upload/{{getImg image}}" style="width:170px;height:170px;" /></a> 
-				</li>
-				{{/with}}
-				{{/each}}                                                                          
-			</ul>
-						{{/with}}
+			<section id="best_selling_product">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							{{#with list2}}
+							<h1 class="text-center" style="font-weight:bold">{{title}}</h1>
+
+							<div class="clearout"></div> 
+							<ul id="flexiselDemo4"> 
+								{{#each products}}
+								{{#with getProduct this}}
+								<li><a href="{{pathFor 'details' id=_id}}"><img src="/upload/{{getImg image}}" style="width:170px;height:170px;" /></a> 
+								</li>
+								{{/with}}
+								{{/each}}                                                                          
+							</ul>
+							{{/with}}
+						</div>
 					</div>
 				</div>
-			</div>
-		</section><!-- end BEST SELLER PRODUCTS -->
-		<script type="text/javascript">
+			</section><!-- end BEST SELLER PRODUCTS -->
+			<script type="text/javascript">
 
 				$("#flexiselDemo4").flexisel({
 					enableResponsiveBreakpoints: true,
@@ -124,32 +125,32 @@
 					}
 				});
 
-			
+
 			</script>	
-		<section id="season_product">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						{{#with list3}}
-					<h1 class="text-center" style="font-weight:bold">{{title}}</h1>
-			
-			<div class="clearout"></div> 
-			<ul id="flexiselDemo5"> 
-				{{#each products}}
-				{{#with getProduct this}}
-				<li><a href="{{pathFor 'details' id=_id}}"><img src="/upload/{{getImg image}}" style="width:170px;height:170px;" /></a> 
-				</li>
-				{{/with}}
-				{{/each}}                                                                          
-			</ul>
-						{{/with}}
+			<section id="season_product">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							{{#with list3}}
+						<h1 class="text-center" style="font-weight:bold">{{title}}</h1>
+
+							<div class="clearout"></div> 
+							<ul id="flexiselDemo5"> 
+								{{#each products}}
+								{{#with getProduct this}}
+								<li><a href="{{pathFor 'details' id=_id}}"><img src="/upload/{{getImg image}}" style="width:170px;height:170px;" /></a> 
+								</li>
+								{{/with}}
+								{{/each}}                                                                          
+							</ul>
+							{{/with}}
+						</div>
 					</div>
 				</div>
-			</div>
-		</section><!-- end SEASON PRODUCTS -->
-		<script type="text/javascript">
+			</section><!-- end SEASON PRODUCTS -->
+			<script type="text/javascript">
 
-		
+
 				$("#flexiselDemo5").flexisel({
 					enableResponsiveBreakpoints: true,
 					responsiveBreakpoints: { 
@@ -170,5 +171,5 @@
 
 				
 			</script>	
-	</div>
-</template>
+		</div>
+	</template>
