@@ -1,6 +1,7 @@
 Session.set('compteur',0);
 Session.set('rank','');
 Template.reward.helpers({
+	
 	short: function(count){
 		return count.substr(0,20);
 	},
@@ -13,6 +14,7 @@ Template.reward.helpers({
 	},
 	getpoint: function(){
 		var me=Meteor.user();
+		alert("me mellow ");
 		if(me==null)
 			return;
 		if(me.profile.shipcard!='undefined')

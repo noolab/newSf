@@ -2533,7 +2533,7 @@ Template.addproduct.rendered = function(){
 		}
 
 	});
-=======
+
 
 // add Products
 Session.set("tags", "");
