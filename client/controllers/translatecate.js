@@ -1,4 +1,4 @@
-Template.translatecategory.events({
+Template.translate_category.events({
 	'click #btnAdd':function(e){
 		e.preventDefault();
 		var title = $('#title').val();

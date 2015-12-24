@@ -2535,24 +2535,6 @@ Template.addproduct.rendered = function(){
 	});
 
 
-// add Products
-Session.set("tags", "");
-Session.set("category", "");
-Session.set("filter","");
-Session.set("attributes","");
-Session.set('selected_attr','No attribute');
-Session.set("tag_filter",'');
-
-
-Session.set("parentAttr","");
-Session.set('ADDIMAGEID', "");
-Session.set('ADDIMAGEID_ATTR', "");
-Session.set("filter","");
-Session.set('fiterValue',"");
-Session.set('tags','');
-Session.setDefault('userId','');
-Session.set('removefilter','');
-Session.set('numberOfReviews',2);
 
 Meteor.call('getPath',function(err,res){
 				Session.set('path',res);

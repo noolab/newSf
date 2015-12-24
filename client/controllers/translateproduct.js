@@ -1,4 +1,4 @@
-Template.producttranslate.events({
+Template.translateproduct.events({
 	'click #btnAdd':function(e){
 		e.preventDefault();
 		var title = $('#title').val();
