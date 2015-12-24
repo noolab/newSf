@@ -4,11 +4,12 @@
 Meteor.publish("categories", function () {console.log('categories:'+categories.find({}).fetch().length);
     return categories.find({});
 });
-Meteor.publish('products', function (limit){ 
+//Meteor.publish('products', function (limit){ 
+TAPi18n.publish('products', function (limit){ 
   if(limit!=-1)
-    return products.find({},{limit:limit});
+    return products.i18nFind({},{limit:limit});//return products.find({},{limit:limit});
   else
-    return products.find({});
+    return products.i18nFind({});
 });
 Meteor.publish('images', function (){ 
   return images.find({});
