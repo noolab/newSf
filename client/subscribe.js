@@ -1,7 +1,7 @@
 
 Meteor.subscribe("categories");
 Deps.autorun(function() {
-	Meteor.subscribe("products",20);
+	TAPi18n.subscribe("products",20);
 });
 
 Meteor.subscribe("images");
