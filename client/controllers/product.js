@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 // add Products
 Session.set("tags", "");
 Session.set("category", "");
@@ -1264,7 +1264,7 @@ Template.addproduct.rendered = function(){
 			var update = Session.set('numberOfReviews',sum);
 			return update;
 		}
-=======
+	});
 // add Products
 Session.set("tags", "");
 Session.set("category", "");
@@ -2530,5 +2530,5 @@ Template.addproduct.rendered = function(){
 			var update = Session.set('numberOfReviews',sum);
 			return update;
 		}
->>>>>>> 0849a9cec566bbb206c50b42ef4c6d373ff7f7a1
+
 	});
