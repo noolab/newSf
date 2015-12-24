@@ -24,6 +24,8 @@ Template.addContent.events({
     var files = event.target.files;
     for (var i = 0, ln = files.length; i < ln; i++) {
       images.insert(files[i], function (err, fileObj) {
+      	console.log('inserted image: '+fileObj);
+      	console.log('error:'+JSON.stringify(err));
         // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
 		Session.set('ADDIMAGEID', fileObj._id);
 	  });
