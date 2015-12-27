@@ -1064,6 +1064,7 @@ Template.details.helpers({
 
 
 Template.details.rendered=function(){
+	$("#myElement").click();
 	console.log('limit'+Session.get('limit'));
 	console.log('PRODUCTS'+products.find().fetch().length);
 	var productId=String(Router.current().params.id);
@@ -1138,48 +1139,10 @@ Template.details.rendered=function(){
 			}
 			
 		}
-		//console.log('Filter:');
-		//console.log(Session.get("tag_filter"));
-		//alert(value);
-	  alert( "HOP" );
+		
 
 	});
-	/*alert("finish");
-	$(".gallery-top").Swiper({
-	    nextButton: '.swiper-button-next',
-        prevButton: '.swiper-button-prev',
-        spaceBetween: 10,
-        loop:true,
-        loopedSlides: 3, //looped slides should be the same 
-    });
 
-  	$(".gallery-thumbs").Swiper({
-  			spaceBetween: 10,
-	        slidesPerView: 3,
-	        touchRatio: 0.2,
-	        loop:true,
-	        loopedSlides: 3, //looped slides should be the same
-	        slideToClickedSlide: true
-        });
-  	
-  	galleryTop = new Swiper('.gallery-top', {
-        nextButton: '.swiper-button-next',
-        prevButton: '.swiper-button-prev',
-        spaceBetween: 10,
-        loop:true,
-        loopedSlides: 3, //looped slides should be the same     
-    });
-    galleryThumbs = new Swiper('.gallery-thumbs', {
-        spaceBetween: 10,
-        slidesPerView: 3,
-        touchRatio: 0.2,
-        loop:true,
-        loopedSlides: 3, //looped slides should be the same
-        slideToClickedSlide: true
-    });
-    galleryTop.params.control = galleryThumbs;
-    galleryThumbs.params.control = galleryTop;*/
-  	//alert("finish");
 };
 // datetimepicker
 Template.addproduct.onRendered(function() {
@@ -1961,7 +1924,7 @@ Template.details.events({
                  }
 
                  Meteor.call('insertFavorite',obj);
-                  alert('Product successfully append to favorite!');
+                 // alert('Product successfully append to favorite!');
             }
             else{
             	var newId=Random.id();
@@ -1974,7 +1937,7 @@ Template.details.events({
                  }
 
                  Meteor.call('insertFavorite',obj);
-                 alert('Product successfully added to favorite!');
+                 //alert('Product successfully added to favorite!');
             }
     },
     'click #addtocart':function(e,tpl){
@@ -3586,9 +3549,19 @@ Template.details.rendered=function(){
 	var productId=String(Router.current().params.id);
 	var p=products.find({"_id":productId});
 
-	console.log('RECUP LE PRIX:'+p.fetch()[0].price);
-	Session.set('selected_price',p.fetch()[0].price);
-	Session.set('selected_point',p.fetch()[0].point);
+	if(p.fetch()[0].price=="" || p.fetch()[0].point==""){
+		var codeProduit=p.fetch()[0].oldId;
+		var currentAttr=attribute.find({"product":codeProduit});
+		var first=currentAttr.fetch()[0];
+		Session.set('selected_price',first.price);
+		Session.set('selected_point',first.point);
+	}
+	else{
+		console.log('RECUP LE PRIX:'+p.fetch()[0].price);
+		Session.set('selected_price',p.fetch()[0].price);
+		Session.set('selected_point',p.fetch()[0].point);
+	}
+	
 
 	var arr=[];
 	console.log('data: '+productId);
