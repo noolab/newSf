@@ -1,5 +1,5 @@
 Template.translate_category.events({
-	'click #btnAdd':function(e){
+	'submit form':function(e){
 		e.preventDefault();
 		var title = $('#title').val();
 		var cateid=$('#idcate').val();
@@ -11,7 +11,7 @@ Template.translate_category.events({
 	}
 });
 Template.translateparentTag.events({
-	'click #btnAdd':function(e){
+	'submit form':function(e){
 		e.preventDefault();
 		var title = $('#title').val();
 		var parenttagid=$('#idparenttags').val();
@@ -23,7 +23,7 @@ Template.translateparentTag.events({
 	}
 });
 Template.translatTags.events({
-	'click #btnAdd':function(e){
+	'submit form':function(e){
 		e.preventDefault();
 		var title = $('#title').val();
 		var tagid=$('#idtags').val();
@@ -35,7 +35,7 @@ Template.translatTags.events({
 	}
 });
 Template.translatParent_attr.events({
-	'click #btnAdd':function(e){
+	'submit form':function(e){
 		e.preventDefault();
 		var title = $('#title').val();
 		var parentattrid=$('#idParentattr').val();
@@ -47,7 +47,7 @@ Template.translatParent_attr.events({
 	}
 });
 Template.transleattribute_value.events({
-	'click #btnAdd':function(e){
+	'submit form':function(e){
 		e.preventDefault();
 		var title = $('#title').val();
 		var attrid=$('#idattr').val();
@@ -59,7 +59,7 @@ Template.transleattribute_value.events({
 	}
 });
 Template.transleshops.events({
-	'click #btnAdd':function(e){
+	'submit form':function(e){
 		e.preventDefault();
 		var title = $('#title').val();
 		var shopid=$('#idshops').val();
