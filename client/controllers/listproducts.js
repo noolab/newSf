@@ -1,7 +1,6 @@
 Session.set('nbproducts','');
 Session.set('querylimit',16);
 Session.set('quickview','');
- Session.set("SORTBYNAME", '');
 Template.listproducts.helpers({
 	nbproducts: function(){
 		return Session.get('nbproducts');
@@ -44,11 +43,6 @@ Template.listproducts.helpers({
 		var shop = shops.findOne({_id:id });
 		if( shop ) return shop.name; 
 	},
-	getSortName: function(){
-		var result= Session.get("SORTBYNAME");
-		//console.log(result);
-		return result;
-	}
 
 });
 
@@ -168,13 +162,7 @@ Template.listproducts.events({
 			}
 			 
             
-    	},
-	    "click #sortname":function(e){
-	        e.preventDefault();
-	        var result = products.find({}, {sort: {title:1}});
-	        //alert("sort by name result " + result.count());
-	        Session.set("SORTBYNAME", result);
-	    }
+    	}
  });
 
 Template.listproducts.onCreated(function() {
