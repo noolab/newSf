@@ -43,12 +43,21 @@ Template.listproducts.helpers({
 		var shop = shops.findOne({_id:id });
 		if( shop ) return shop.name; 
 	},
-
+	getAllListPro:function(){
+		var toSort =  Session.get("GETName");
+		if(toSort == "name"){
+			return products.find({},{sort:{title:1}});
+		}else if(toSort == "price"){
+			return products.find({},{sort:{price:-1}});
+		}else{
+			return products.find({});
+		}
+		
+	}
 });
 
 
 Template.listproducts.events({
-
 	'click #favorite':function(e,tpl){
 	             e.preventDefault();
 	             var id=this._id;
@@ -162,7 +171,16 @@ Template.listproducts.events({
 			}
 			 
             
+    	},
+    	"click #name":function(e){
+    		e.preventDefault();
+    		 Session.set("GETName",'name');    		
+    	},
+    	"click #price":function(e){
+    		e.preventDefault();
+    		Session.set("GETName",'price');
     	}
+
  });
 
 Template.listproducts.onCreated(function() {
