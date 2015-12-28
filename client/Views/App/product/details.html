@@ -24,6 +24,12 @@
 							{{/with}}
 							{{/each}}
 						</p>
+<br /><br />
+						<p>
+							{{#each tags}}
+							{{getParentTagName parent}}: <i>{{value}}</i> ; 
+							{{/each}}
+						</p>
 
 					</div>
 				</div>
