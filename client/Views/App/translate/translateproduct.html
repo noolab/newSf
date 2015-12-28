@@ -1,22 +1,31 @@
 <template name="translateproduct">
 	<div class="container">
-				<h1>Update Products</h1>
-			<form>
+				
+				<div class="panel panel-default">
+                        <div class="panel-heading">
+                            	<h1>Update Products</h1>
+                        </div>
+
+			<form role="form">
 					<input type="hidden" class="form-control" name="idproduct" id="idproduct" value="{{_id}}">
-					<label>Title</label>
-					<input type="text" class="form-control" name="title" id="title">
-					<label>Description</label>
-					<textarea class="form-control" col="5" row="3" id="description"></textarea>
-					<label>Brand</label>
-					<input type="text" class="form-control" name="brand" id="brand">
-					<label>CODE</label>
-					<input type="text" class="form-control" name="code" id="code">
-					<label>MetaTitle</label>
-					<input type="text" class="form-control" name="metaTitle" id="metaTitle">
-					<label>MetaKey</label>
-					<input type="text" class="form-control" name="metaKey" id="metaKey">
+					<label>Title</label><br>
+					<input type="text" class="form-control" name="title" id="title" value="{{i18n.fa.title}}" required><br>
+					<label>Description</label><br>
+					<textarea class="form-control" col="5" row="3" value="{{i18n.fa.description}}" name="description" id="description" required></textarea>
+					<label>Brand</label><br>
+					<input type="text" class="form-control" name="brand" id="brand" value="{{i18n.fa.brand}}" required><br>
+					<label>CODE</label><br>
+					<input type="text" class="form-control" name="code" id="code" value="{{i18n.fa.code}}" required><br>
+					<label>MetaTitle</label><br>
+					<input type="text" class="form-control" name="metaTitle" value="{{i18n.fa.metaTitle}}" id="metaTitle" required>
+					<label>MetaKey</label><br>
+					<input type="text" class="form-control" value="{{i18n.fa.metaKey}}" name="metaKey" id="metaKey" required>
 					<br>
-					<button type="submit" class="btn btn-primary" id="btnAdd">Add</button>
+					<button type="submit" class="btn-sm btn-primary" id="btnAdd">Update</button>
 			</form>
+		</div>
 	</div>
+<!-- /*<script type="text/javascript">
+	CKEDITOR.replace( 'description' );
+</script>*/ -->
 </template>

@@ -1,5 +1,5 @@
 Template.translateproduct.events({
-	'click #btnAdd':function(e){
+	'submit form':function(e){
 		e.preventDefault();
 		var title = $('#title').val();
 		var description = $('#description').val();
@@ -17,7 +17,6 @@ Template.translateproduct.events({
 			metaTitle:metaTitle,
 			metaKey:metaKey
 		};
-
 		console.log('MYOBJ'+JSON.stringify(obj));
 		Meteor.call('insertTrad',obj,productid);
 		alert("successfull add");
