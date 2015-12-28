@@ -1,12 +1,17 @@
 <template name="translate_category">
 	<div class="container">
-		<h1>Update Categories</h1>
+		<div class="panel panel-default">
+                        <div class="panel-heading">
+                            	<h1>Update Categories</h1>
+                        </div>
+	
 			<form>
 					<input type="hidden" class="form-control" name="idcate" id="idcate" value="{{_id}}">
 					<label>Title</label>
-					<input type="text" class="form-control" name="title" id="title">
+					<input type="text" class="form-control" name="title" id="title" value="{{i18n.fa.title}}" required>
 					<br>
-					<button type="submit" class="btn btn-primary" id="btnAdd">Add</button>
+					<button type="submit" class="btn-sm btn-primary" id="btnAdd">Update</button>
 			</form>
 	</div>
+</div>
 </template>
