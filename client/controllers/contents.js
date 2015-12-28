@@ -284,7 +284,7 @@ Template.managecontent.events({
 		return contents.remove({_id:id});
 	}
 });
-
+/*
 Template.showwebzine.events({
 'click #remove':function(){
 		var id = this._id;
@@ -308,7 +308,7 @@ Template.showlooks.events({
 //show Webzine
 Template.showwebzine.helpers({
 	getWebzine: function(){
-		return contents.find({"typeid":"ZwarAPwhFaf3acLuM"});
+		return contents.find({"type":"Webzine"});
 	},
 	getTypename: function(){
 		var id =this.typeid;
@@ -322,7 +322,7 @@ Template.showwebzine.helpers({
 //show Tuto
 Template.showtuto.helpers({
 	getTuto: function(){
-		return contents.find({"typeid":"tCvBRhhfJ7PvTHBh7"});
+		return contents.find({"type":"Tuto"});
 	},
 	getTypename: function(){
 		var id =this.typeid;
@@ -336,7 +336,7 @@ Template.showtuto.helpers({
 //show Looks
 Template.showlooks.helpers({
 	getLooks: function(){
-		return contents.find({"typeid":"tCvBRhhfJ7PvTHBh8"});
+		return contents.find({"type":"Looks"});
 	},
 	getTypename: function(){
 		var id =this.typeid;
@@ -348,17 +348,14 @@ Template.showlooks.helpers({
 	}
 });
 
+*/
 
-Template.tutonew.helpers({
-	getTutoCategory:function(){
-		//var type=contents_type.findOne({"type":"Tuto"});
-		return categories.find();
-	}
-});
 Template.tutolisting.helpers({
 	getContent:function(id){
 		var type=contents_type.findOne({type:"Tuto"});
 		//console.log('makar:'+type._id+'categoryId:'+id);
+
+		console.log('Displaying tuto');
 		var string=type._id+':'+id;
 		Session.set('Tuto',string);
 		return contents.find({category:id},{typeid:type._id});

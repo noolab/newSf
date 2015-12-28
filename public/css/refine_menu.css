@@ -179,8 +179,8 @@
 .main_refine_menu{
 	margin-bottom:15px;
 	box-shadow: 2px 4px 5px 1px rgba(189, 184, 197, 0.4);
-	-moz-box-shadow: 2px 5px 8px 0px rgba(119, 119, 119, 0.58);
-	-webkit-box-shadow: 2px 5px 8px 0px rgba(119, 119, 119, 0.58);
+	-moz-box-shadow: 2px 4px 5px 1px rgba(189, 184, 197, 0.4);
+	-webkit-box-shadow: 2px 4px 5px 1px rgba(189, 184, 197, 0.4);
 }
 .refine_menu{
 	padding:5px 25px;
