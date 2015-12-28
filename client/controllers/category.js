@@ -448,7 +448,7 @@ Template.listing.events({
                  Meteor.call('insertFavorite',obj);
                  $(event.target).addClass("red");
                  $(event.target).removeClass("fa-heart-o");
-                  alert('Product successfully append to favorite!');
+                 // alert('Product successfully append to favorite!');
             }
             else{
             	var newId=Random.id();

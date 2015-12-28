@@ -22,7 +22,7 @@ Template.home.helpers({
 		return products.findOne({"_id":id});
 	},
 	contents : function(){
-		var type=contents_type.findOne({"type":"News"});
+		var type=contents_type.findOne({"type":"Webzine"});
 		if(type!=null)
 			return contents.find({"typeid":type._id});
 	},

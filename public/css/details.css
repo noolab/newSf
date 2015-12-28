@@ -155,3 +155,16 @@
 		}
 
 /* page like */
+/* page recommend */
+
+.linkrecommendation{
+	color:#000;
+}
+
+a.linkrecommendation{
+	color:#000;
+}
+
+a.linkrecommendation:visited{
+	color:#000;
+}
