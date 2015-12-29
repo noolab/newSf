@@ -81,6 +81,9 @@ Meteor.publish("address", function () {
     return list_product.find({});
 });
 
-Meteor.publish('attribute_value', function (){ 
+Meteor.publish('attribute_value', function (){ order
   return attribute_value.find({});
+});
+Meteor.publish('order', function (){ 
+  return order.find({});
 });

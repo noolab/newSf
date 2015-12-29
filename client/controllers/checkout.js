@@ -16,10 +16,12 @@ Template.checkout.helpers({
 		}
 		var total = 0;
 		console.log("MyCart"+JSON.stringify(mycart.fetch()[0]));
+		//Session.set("allcart", mycart);
 		mycart.forEach( function(value,index){
 			total = total + value.subtotal;
 		});
 		Session.set("total", total);
+
 		 
 		return mycart;
 	},	
@@ -93,6 +95,68 @@ Template.checkout.events({
 			
 		}
 		Meteor.call('removecart',itemid,userId);
+	},
+	'click #btnAdd':function(e){
+		e.preventDefault();
+		var mycart = '';
+		var arrCartId=[];
+		if(Meteor.userId()){
+			userid = Meteor.userId();
+			if( userid ){
+				mycart = cart.find({userId:userid});
+			}
+		}else{
+			userid = Session.get('userId');
+			if( userid ){
+				mycart = cart.find({userId:userid});
+			}
+		}
+		var total = 0;
+		alert("My"+JSON.stringify(mycart.fetch()[0]));
+		//Session.set("allcart", mycart);
+		mycart.forEach( function(value){
+			total = total + value.subtotal;
+			
+			alert("My"+JSON.stringify(obj));
+			arrCartId.push(value._id);
+			
+		});
+		var obj={
+			cartId:arrCartId,
+			total:total
+		}
+		Meteor.call('insertOrder',obj);
 		
+
+		Router.go("/confirmorder");
+	}
+});
+Template.checkout.helpers({
+	getprofile:function(){
+		var id = Meteor.userId();
+		return Meteor.users.findOne({_id:id});
+	}
+});
+Template.confirmorder.helpers({
+	getprofile:function(){
+		var id = Meteor.userId();
+		return Meteor.users.findOne({_id:id});
+	}
+});
+Template.confirmorder.events({
+	'click #btnAdd':function(e){
+		e.preventDefault();
+		var id = Meteor.userId();
+		var address = $('#address').val();
+		alert(address);
+		var obj = {
+			address:address
+		}
+		Meteor.call('insertAddress',id,obj);
+		alert("love love");
+	},
+	'click #btnAdd':function(e){
+		e.preventDefault();
+		Router.go("/confirmorder");
 	}
 });

@@ -1,9 +1,14 @@
 <template name="checkout">
- 
+ <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <section class="shadow_bottom" id="checkout">
 	<div class="container">
 			
 			<h1 class="content-text-review">Checkout</h1>
+			<hr>
 			<div class="row">
 				<div class="col-md-9">
 					<div class="row">
@@ -19,11 +24,17 @@
 						
 							<div class="row cart">
 								<div class="col-md-2">{{#with getProductInfo id_product}}<a href="/details/{{_id}}"><img src="/upload/{{getImg image}}" class="img-responsive"></a>{{/with}}</div>
-								<div class="col-md-3">{{#with getProductInfo id_product}}{{title}}{{/with}}</div>
-								<div class="col-md-2">{{getShopName shop}}</div>
-								<div class="col-md-2"><input type="text" style="color:black;width:30px;" class="qty" value="{{quantity}}" /></div>
-								<div class="col-md-1">{{#with getProductInfo id_product}}{{price}}{{/with}}</div>
-								<div class="col-md-1">{{subtotal}}</div>
+
+								<div class="col-md-3" id="proname">{{#with getProductInfo id_product}}{{title}}{{/with}}</div>
+
+								<div class="col-md-2" id="shop">{{getShopName shop}}</div>
+
+								<div class="col-md-2"><input type="text" style="color:black;width:30px;" id="qty" class="qty" value="{{quantity}}" /></div>
+
+								<div class="col-md-1" id="price">{{#with getProductInfo id_product}}{{price}}{{/with}}</div>
+
+								<div class="col-md-1" id="subtotal">{{subtotal}}</div>
+
 								<div class="col-md-1"><a href="" class="remove" style="color:black;">X</a></div>
 							</div>
 						
@@ -33,10 +44,34 @@
 					<div class="row cart">
 						<hr>
 						<div class="col-md-10 total-text"><strong>Total</strong></div>
-						<div class="col-md-2"><strong>{{getTotal}}</strong></div>
+						<div class="col-md-2" id="total"><strong>{{getTotal}}</strong></div>
+					</div>
+					
+					<div class="row">
+						<!-- Address -->
+						   <!-- <table class="table">
+									<tbody>
+										{{#with getprofile}}
+										
+										<tr>
+											<td><strong>Email:</strong></td>
+											{{#each emails}}
+											<td style="font-weight:bold" id="email">{{address}}</td>
+											{{/each}}
+										</tr>
+										<tr>
+											<td><strong>Address:</strong></td>
+											<td style="font-weight:bold" id="address">{{profile.address}}</td>
+										</tr>
+										{{/with}}
+									</tbody>
+									
+								</table> -->
+					
+					<!-- End Address -->
 					</div>
 					<div class="row">
-						<hr><div class="pull-right"><input type="button"  class="btn btn-primary" style="background:#000" value="Proceed Order"></div>
+						<hr><div class="pull-right"><input type="button"  class="btn btn-primary" style="background:#000" id="btnAdd" value="Proceed Order"></div>
 					</div>
 
 				</div>
@@ -46,5 +81,4 @@
 			</div>
 	</div>
 </section>
-
 </template>
