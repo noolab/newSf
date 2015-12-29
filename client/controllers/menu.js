@@ -21,7 +21,7 @@ Deps.autorun(function () {
 */
 Template.header.helpers({
 	getParent: function(){
-		return categories.find({"parent":"0"});
+		return categories.find({"$or":[{"parent":"0"},{"parent":" "}]});
 	},
 	getChildren: function(parent){
 		return categories.find({"parent":parent});

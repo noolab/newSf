@@ -43,12 +43,22 @@ Template.listproducts.helpers({
 		var shop = shops.findOne({_id:id });
 		if( shop ) return shop.name; 
 	},
-
+	getAllListPro:function(){
+		var toSort =  Session.get("GETName");
+		var limit=Number(Session.get('querylimit'));
+		if(toSort == "name"){
+			return products.find({},{sort:{title:1}},{limit:Session.get("querylimit")});
+		}else if(toSort == "price"){
+			return products.find({},{sort:{price:-1}},{limit:Session.get("querylimit")});
+		}else{
+		return products.find({},{limit:Session.get("querylimit")});
+		}
+		
+	}
 });
 
 
 Template.listproducts.events({
-
 	'click #favorite':function(e,tpl){
 	             e.preventDefault();
 	             var id=this._id;
@@ -162,7 +172,20 @@ Template.listproducts.events({
 			}
 			 
             
+    	},
+    	"click #name":function(e){
+    		e.preventDefault();
+    		 Session.set("GETName",'name');    		
+    	},
+    	"click #price":function(e){
+    		e.preventDefault();
+    		Session.set("GETName",'price');
+    	},
+    	"click #bestSelling":function(e){
+    		e.preventDefault();
+    		Session.set("GETName",'sell');
     	}
+
  });
 
 Template.listproducts.onCreated(function() {
