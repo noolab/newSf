@@ -110,7 +110,7 @@
 		</div>
 	
 	
-		<div class="col-sm-1">
+		<div class="col-sm-2">
 			<input  value="Add" id="add_attr" class="btn btn-primary btn-block">
 		</div>
 	</div>
@@ -119,15 +119,38 @@
 		<div class="form-group">
 			<label class="control-label col-sm-3" for="article"> Article <span style="color:red">*</span></label>
 			<div class="col-sm-2">
+			<!-- {{getArticleName}} -->
 				<select class="form-control" id="article">
 					<option value="0">Select Article</option>
 					{{#each getArticle}}
-						<option value="{{_id}}">{{type}}</option>
+						<option value="{{_id}}">{{title}}</option>
 					{{/each}}
 				 </select>
 			</div>
+			<div class="col-sm-3">
+				<input type="button" value="Add" id="addarticle" class="btn btn-primary">
+			</div>
 		</div>
 	</div>
+
+	<div class="form-group">
+		<div class="form-group">
+			<label class="control-label col-sm-3" for="tuto"> Tuto <span style="color:red">*</span></label>
+			<div class="col-sm-2">
+			<!-- {{getArticleName}} -->
+				<select class="form-control" id="tuto">
+					<option value="0">Select Tuto</option>
+					{{#each getTutoes}}
+						<option value="{{_id}}">{{title}}</option>
+					{{/each}}
+				 </select>
+			</div>
+			<div class="col-sm-3">
+				<input type="button" value="Add" id="btn_tuto" class="btn btn-primary">
+			</div>
+		</div>
+	</div>
+
 <!-- end -->
 
 	<div class="form-group">
@@ -214,8 +237,49 @@
 		</tr>
 		{{/each}}
 		
-		</table>
+		</table><br /><br />
+		
+
+		<br /><br />
 	</div>
+	<!-- sokhy -->
+	<div id="recap-attribute">
+		<table>
+		<tr>
+			<th>Article</th>
+			<th>Action</th>
+		</tr>
+		{{#each getContentArt}}
+		<tr>
+			<td>{{getTitle this}}</td>
+			<td><a href="" class="deleteArticle" style="color:blue;">Delete</a></td>
+		</tr>
+		{{/each}}
+		
+		</table><br /><br />
+		
+
+		<br /><br />
+	</div>
+	<div id="recap-attribute">
+		<table>
+		<tr>
+			<th>Tuto</th>
+			<th>Action</th>
+		</tr>
+		{{#each getContentTutoes}}
+		<tr>
+			<td>{{getTitle this}}</td>
+			<td><a href="" class="deleteTutoes" style="color:blue;">Delete</a></td>
+		</tr>
+		{{/each}}
+		
+		</table><br /><br />
+		
+
+		<br /><br />
+	</div>
+	<!-- end -->
 </div>
 	<script type="text/javascript">
 	CKEDITOR.replace( 'editor1' );

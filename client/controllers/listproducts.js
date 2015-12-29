@@ -53,12 +53,6 @@ Template.listproducts.helpers({
 			return products.find({});
 		}
 		
-	},
-	getArticle:function(){
-		var typeId=contents.find({}).typeid;
-		var result=contents_type.find({type:typeId});
-		console.log("article--- "+result);
-		return result;
 	}
 });
 
