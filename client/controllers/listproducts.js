@@ -45,12 +45,13 @@ Template.listproducts.helpers({
 	},
 	getAllListPro:function(){
 		var toSort =  Session.get("GETName");
+		var limit=Number(Session.get('querylimit'));
 		if(toSort == "name"){
-			return products.find({},{sort:{title:1}});
+			return products.find({},{sort:{title:1}},{limit:Session.get("querylimit")});
 		}else if(toSort == "price"){
-			return products.find({},{sort:{price:-1}});
+			return products.find({},{sort:{price:-1}},{limit:Session.get("querylimit")});
 		}else{
-			return products.find({});
+		return products.find({},{limit:Session.get("querylimit")});
 		}
 		
 	}
@@ -179,6 +180,10 @@ Template.listproducts.events({
     	"click #price":function(e){
     		e.preventDefault();
     		Session.set("GETName",'price');
+    	},
+    	"click #bestSelling":function(e){
+    		e.preventDefault();
+    		Session.set("GETName",'sell');
     	}
 
  });
