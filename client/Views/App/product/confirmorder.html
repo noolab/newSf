@@ -1,0 +1,40 @@
+<template name= "confirmorder">
+	<div class="container">
+<div class="row">
+						<!-- Address -->
+						<form>
+						   <table class="table">
+									<tbody>
+										{{#with getprofile}}
+										
+										<tr>
+											<td><strong>Email:</strong></td>
+											{{#each emails}}
+											<td style="font-weight:bold" id="email">{{address}}</td>
+											{{/each}}
+										</tr>
+										<tr>
+											<td><strong>Address:</strong></td>
+											<td style="font-weight:bold" id="address1">{{profile.address}}</td>
+										</tr>
+										{{/with}}
+									</tbody>
+									
+								</table>
+					<div class="form-group">
+						<label class="control-label col-sm-3" for="address">Address <span style="color:red">*</span></label>
+						<div class="col-sm-9">
+							<input type="text" name="address" id="address" class="form-control input-sm" placeholder="Address">
+						</div>
+					</div>
+					</form>
+					<!-- End Address -->
+					</div>
+					<div class="col-sm-offset-3 col-sm-2">
+					<input type="submit" value="Update" id="btnAdd" class="btn btn-primary btn-block">
+					</div>
+					<div class="col-sm-offset-3 col-sm-2">
+					<input type="submit" value="Next" id="btnNext" class="btn btn-primary btn-block">
+					</div>
+				</div>
+</template>

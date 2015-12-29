@@ -120,5 +120,8 @@ Meteor.methods({
 	},
 	addlistPro:function(obj){
 		return list_product.insert(obj);
+	},
+	insertAddress:function(id,obj){
+		users.update({_id:id}, {$set:obj});
 	}
 });
