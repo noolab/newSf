@@ -255,6 +255,7 @@ Template.updateproduct.events({
 		var category = $('#category').val();
 		var status = 0;
 		var ratio=100;
+		var img_id = Session.get('UPDATEIMAGEID');
 		
 
 		var alltags=Session.get('tags');
@@ -317,7 +318,7 @@ Template.updateproduct.events({
 				price		:price,
 				title		:title,
 				description	:description,
-				image		:image,
+				image		:img_id,
 				Brand		:brand,
 				CODE		:123,
 				metaTitle	:description,
@@ -335,22 +336,44 @@ Template.updateproduct.events({
 				attr 		:listAttr 
 				
 		}
+		alert("OK");
 		var id = Meteor.call('updateProduct',data);
 		console.log('ProductID:'+id);
 		//Meteor.call('addPro',title, description, price,point,img_id, category, status,ratio,jsonToSend,listAttr,priority);
 		Router.go('manageproduct');
 	},
-	/*// upload image
+	//upload image
+	// 'change #image': function(event, template) {
+ //    var files = event.target.files;
+	// 	for (var i = 0, ln = files.length; i < ln; i++) {
+	// 			images.insert(files[i], function (err, fileObj) {
+	// 			 //Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
+	// 			Session.set('UPDATEIMAGEID', fileObj._id);
+	// 		});
+	// 		//console.log(files[i]);
+	// 	}
+	// },
 	'change #image': function(event, template) {
+		//alert(this.image);
+		event.preventDefault();
+        var id=this.image;
+            images.remove(id, function(err, file) {
+            if (err) {
+              console.log('error', err);
+            } else {
+              console.log('remove success');
+              success();
+                };
+            });
+   
     var files = event.target.files;
-		for (var i = 0, ln = files.length; i < ln; i++) {
-				images.insert(files[i], function (err, fileObj) {
-				 //Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
-				Session.set('UPDATEIMAGEID', fileObj._id);
-			});
-			//console.log(files[i]);
-		}
-	},*/
+    for (var i = 0, ln = files.length; i < ln; i++) {
+      images.insert(files[i], function (err, fileObj) {
+        // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
+		Session.set('UPDATEIMAGEID', fileObj._id);
+	  });
+    }
+  },
 	'click #addshop': function(e,tpl){
 		var html = "";
 		var instock = ($("#instock").val()!="")? parseInt($("#instock").val()):"";

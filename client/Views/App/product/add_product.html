@@ -114,7 +114,21 @@
 			<input  value="Add" id="add_attr" class="btn btn-primary btn-block">
 		</div>
 	</div>
-
+<!-- sokhy -->
+	<div class="form-group">
+		<div class="form-group">
+			<label class="control-label col-sm-3" for="article"> Article <span style="color:red">*</span></label>
+			<div class="col-sm-2">
+				<select class="form-control" id="article">
+					<option value="0">Select Article</option>
+					{{#each getArticle}}
+						<option value="{{_id}}">{{type}}</option>
+					{{/each}}
+				 </select>
+			</div>
+		</div>
+	</div>
+<!-- end -->
 
 	<div class="form-group">
 								<label class="control-label col-sm-3" for="tag">Tag </label><br>
