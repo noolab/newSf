@@ -2,39 +2,76 @@ Template.translate_category.events({
 	'submit form':function(e){
 		e.preventDefault();
 		var title = $('#title').val();
-		var cateid=$('#idcate').val();
+		var cateid=this._id;
 		var lang = $('#lang').val(); 
 		var obj ={
 			title:title
 		};
-		Meteor.call('insertTradeCategory',obj,cateid,lang);
-		alert("Successful update");
+		
+		var object={
+			cateid:cateid,
+			i18n:{en:obj}
+		}
+
+		Meteor.call('insertTradeCategory',object,cateid,lang, function(err){
+			if(err){
+				console.log(err);
+			}else{
+				alert("Successful update");
+				Router.go('/managecategory');
+			}
+		});
 	}
 });
 Template.translateparentTag.events({
 	'submit form':function(e){
 		e.preventDefault();
 		var title = $('#title').val();
-		var parenttagid=$('#idparenttags').val();
+		var parenttagid=this._id;
 		var lang = $('#lang').val(); 
 		var obj ={
 			title:title
 		};
-		Meteor.call('insertTradparentTag',obj,parenttagid,lang);
-		alert("Successful update");
+		
+		var object={
+			parenttagid:parenttagid,
+			i18n:{en:obj}
+		}
+
+		Meteor.call('insertTradparentTag',object,parenttagid,lang, function(err){
+			if(err){
+				console.log(err);
+			}else{
+				alert("Successful update");
+				Router.go('/manageparenttag');
+			}
+		});
 	}
 });
 Template.translatTags.events({
 	'submit form':function(e){
 		e.preventDefault();
 		var title = $('#title').val();
-		var tagid=$('#idtags').val();
+		var tagid=this._id;
 		var lang = $('#lang').val(); 
+
 		var obj ={
 			title:title
 		};
-		Meteor.call('insertTradTags',obj,tagid,lang);
-		alert("Successful update");
+		
+		var object={
+			tagid:tagid,
+			i18n:{en:obj}
+		}
+
+		Meteor.call('insertTradTags',object,tagid,lang, function(err){
+			if(err){
+				console.log(err);
+			}else{
+				alert("Successful update");
+				Router.go('/managetag');
+			}
+		});
 	}
 });
 Template.translatParent_attr.events({

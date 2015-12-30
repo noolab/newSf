@@ -87,3 +87,7 @@ Meteor.publish('attribute_value', function (){ order
 Meteor.publish('order', function (){ 
   return order.find({});
 });
+
+Meteor.publish('translation', function (){ 
+  return translation.find({});
+});

@@ -8,7 +8,7 @@ Template.translateproduct.events({
 		var metaTitle = $('#metaTitle').val(); 
 		var metaKey = $('#metaKey').val(); 
 		var lang = $('#lang').val(); 
-		var productid=$('#idproduct').val();
+		var productid=this._id;
 
 		var obj ={
 			title:title,
@@ -18,9 +18,19 @@ Template.translateproduct.events({
 			metaTitle:metaTitle,
 			metaKey:metaKey
 		};
+		var object={
+			productid:productid,
+			i18n:{en:obj}
+		}
 		console.log('MYOBJ'+JSON.stringify(obj));
-		Meteor.call('insertTrad',obj,productid,lang);
-		Router.go("/manageproduct");
-		//alert("successfull add");
+		Meteor.call('insertTran',object,lang, function(err){
+			if(err){
+				console.log(err+reason);
+			}else{
+				alert("successfull");
+				Router.go("/manageproduct");
+			}
+		});
+		
 	}
 });
