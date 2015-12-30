@@ -144,7 +144,8 @@ Template.confirmorder.helpers({
 	}
 });
 Template.confirmorder.events({
-	'click #btnAdd':function(e){
+	'submit form':function(e){
+		alert('hello');
 		e.preventDefault();
 		var id = Meteor.userId();
 		var address = $('#address').val();
