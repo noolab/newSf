@@ -6,47 +6,59 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
 <section class="shadow_bottom" id="checkout">
-	<div class="container">
+	<div class="container" style="padding-bottom:20px;">
 			
 			<h1 class="content-text-review">Checkout</h1>
 			<hr>
 			<div class="row">
-				<div class="col-md-9">
-					<div class="row">
-						<div class="col-md-2">Image</div>
-						<div class="col-md-3">Product Name</div>
-						<div class="col-md-2">Shop</div>
-						<div class="col-md-2">Qty</div>
-						<div class="col-md-1">Price</div>
-						<div class="col-md-2">subtotal</div>
-						
-					</div>
-					{{#each getCart}}
-						
-							<div class="row cart">
-								<div class="col-md-2">{{#with getProductInfo id_product}}<a href="/details/{{_id}}"><img src="/upload/{{getImg image}}" class="img-responsive"></a>{{/with}}</div>
-
-								<div class="col-md-3" id="proname">{{#with getProductInfo id_product}}{{title}}{{/with}}</div>
-
-								<div class="col-md-2" id="shop">{{getShopName shop}}</div>
-
-								<div class="col-md-2"><input type="text" style="color:black;width:30px;" id="qty" class="qty" value="{{quantity}}" /></div>
-
-								<div class="col-md-1" id="price">{{#with getProductInfo id_product}}{{price}}{{/with}}</div>
-
-								<div class="col-md-1" id="subtotal">{{subtotal}}</div>
-
-								<div class="col-md-1"><a href="" class="remove" style="color:black;">X</a></div>
-							</div>
-						
-						
-					{{/each}}
-
-					<div class="row cart">
-						<hr>
-						<div class="col-md-10 total-text"><strong>Total</strong></div>
-						<div class="col-md-2" id="total"><strong>{{getTotal}}</strong></div>
-					</div>
+				<div class="col-md-12">
+					<table class="table table-striped">
+					    <thead>
+					      <tr>
+					        <th>Image</th>
+					        <th>Product Name</th>
+					        <th>Shop</th>
+					        <th>Qty</th>
+					        <th>Price</th>
+					        <th>subtotal</th>
+					        <th>Tools</th>
+					      </tr>
+					    </thead>
+					    <tbody>
+					    {{#each getCart}}
+					      <tr>
+					        <td>{{#with getProductInfo id_product}}<a href="/details/{{_id}}"><img src="/upload/{{getImg image}}" class="img-responsive" style="width:70px; height:70px;"></a>{{/with}}
+					        </td>
+					        <td>
+					        	{{#with getProductInfo id_product}}{{title}}{{/with}}
+					        </td>
+					        <td>
+					        	{{getShopName shop}}
+					        </td>
+					        <td>
+					        	{{quantity}}
+					        </td>
+					        <td>
+					        	{{#with getProductInfo id_product}}{{price}}{{/with}}
+					        </td>
+					        <td>
+					        	{{subtotal}}
+					        </td>
+					        <td>
+					        	<a href="" class="remove glyphicon glyphicon-trash" style="color:black;"></a>
+					        </td>
+					      </tr>
+					  	{{/each}}
+					  	<tr>
+					  		<td colspan="5" align="right">
+					  			<strong>Total</strong>
+					  		</td>
+					  		<td colspan="2" align="center">
+					  			<strong>{{getTotal}}</strong>
+					  		</td>
+					  	</tr>
+					    </tbody>
+					  </table>
 					
 					<div class="row">
 						<!-- Address -->

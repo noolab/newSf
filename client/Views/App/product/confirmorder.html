@@ -1,5 +1,5 @@
 <template name= "confirmorder">
-	<div class="container">
+	<div class="container" style="padding-bottom:20px;">
 <div class="row">
 						<!-- Address -->
 						<form>
@@ -21,18 +21,28 @@
 									</tbody>
 									
 								</table>
-					<div class="form-group">
+					<div class="form-group" style="padding-bottom:20px;">
 						<label class="control-label col-sm-3" for="address">Address <span style="color:red">*</span></label>
 						<div class="col-sm-9">
 							<input type="text" name="address" id="address" class="form-control input-sm" placeholder="Address">
 						</div>
 					</div>
-					<div class="col-sm-offset-3 col-sm-2">
-					<input type="button" value="Next" id="btnAdd" class="btn btn-primary btn-block">
+					<div class="form-group" style="padding-bottom:20px;">
+						<label class="control-label col-sm-3" for="address">Choose Address <span style="color:red">*</span></label>
+						<div class="col-sm-9">
+							  <input type="checkbox" name="address1" id="address1" value="{{getAddress1}}">{{getAddress1}}<br>
+						</div>	
 					</div>
-					<div class="col-sm-offset-3 col-sm-2">
-					<input type="submit" value="Update" id="btnNext" class="btn btn-primary btn-block">
-					</div>
+
+					<div class="row">
+							
+							<div class="col-sm-4">
+							<input type="submit" value="Update" id="btnNext" class="btn-sm btn-primary btn-block pull-right">
+							</div>
+							<div class="col-sm-4">
+							<input type="button" value="Next" id="btnAdd" class="btn-sm btn-primary btn-block pull-left">
+							</div>
+				   </div>
 					</form>
 					<!-- End Address -->
 					</div>
