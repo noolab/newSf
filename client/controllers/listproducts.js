@@ -42,18 +42,6 @@ Template.listproducts.helpers({
 	getShopname: function( id ){
 		var shop = shops.findOne({_id:id });
 		if( shop ) return shop.name; 
-	},
-	getAllListPro:function(){
-		var toSort =  Session.get("GETName");
-		var limit=Number(Session.get('querylimit'));
-		if(toSort == "name"){
-			return products.find({},{sort:{title:1}},{limit:Session.get("querylimit")});
-		}else if(toSort == "price"){
-			return products.find({},{sort:{price:-1}},{limit:Session.get("querylimit")});
-		}else{
-		return products.find({},{limit:Session.get("querylimit")});
-		}
-		
 	}
 });
 

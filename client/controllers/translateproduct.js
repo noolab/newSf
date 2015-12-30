@@ -7,6 +7,7 @@ Template.translateproduct.events({
 		var brand = $('#brand').val();
 		var metaTitle = $('#metaTitle').val(); 
 		var metaKey = $('#metaKey').val(); 
+		var lang = $('#lang').val(); 
 		var productid=$('#idproduct').val();
 
 		var obj ={
@@ -18,7 +19,8 @@ Template.translateproduct.events({
 			metaKey:metaKey
 		};
 		console.log('MYOBJ'+JSON.stringify(obj));
-		Meteor.call('insertTrad',obj,productid);
-		alert("successfull add");
+		Meteor.call('insertTrad',obj,productid,lang);
+		Router.go("/manageproduct");
+		//alert("successfull add");
 	}
 });
