@@ -42,18 +42,6 @@ Template.listproducts.helpers({
 	getShopname: function( id ){
 		var shop = shops.findOne({_id:id });
 		if( shop ) return shop.name; 
-	},
-	getAllListPro:function(){
-		var toSort =  Session.get("GETName");
-		console.log('SORT:'+toSort);
-		if(toSort == "name"){
-			return products.find({},{sort:{title:1}});
-		}else if(toSort == "price"){
-			return products.find({},{sort:{price:-1}});
-		}else{
-			return products.find({});
-		}
-		
 	}
 });
 
@@ -180,6 +168,10 @@ Template.listproducts.events({
     	"click #price":function(e){
     		e.preventDefault();
     		Session.set("GETName",'price');
+    	},
+    	"click #bestSelling":function(e){
+    		e.preventDefault();
+    		Session.set("GETName",'sell');
     	}
 
  });

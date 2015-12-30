@@ -126,8 +126,10 @@
 								<h1>ARTICLE ABOUT</h1>
 							</div>
 
-							{{#each articles title}}
+							{{#each articles}}
+							{{#with getArticle this}}
 							{{>article}}
+							{{/with}}
 							{{else}}
 							<i>No articles about {{title}}</i>
 							{{/each}}
@@ -147,6 +149,7 @@
 						<h1>{{_ "RELATED PRODUCTS"}}</h1>
 					</div>
 					<div class="row"></div> 
+
 					{{>recommendation}}
 
 				</div>

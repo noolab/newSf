@@ -44,6 +44,7 @@ Template.addproduct.events({
 	},
 	'click #btnAdd': function(e){
 		e.preventDefault();
+		alert("bb");
 		var title = $('#title').val();
 		var description =CKEDITOR.instances.editor1.getData();//$('#editor1').val();// $('.froala-element').html();//froala-element
 		var price = -1;//$('#price').val();
@@ -117,6 +118,24 @@ Template.addproduct.events({
 		for(i=0; i< shopid.length; i++){
 			data_shop.push({shopid:shopid[i],instock:instock[i]});
 		}
+
+		var articles=Session.get('article');
+		articles=articles.split(':');
+		var listArticle=[];
+		for(var i=0;i<articles.length;i++){
+			if(articles[i]!='')
+				listArticle.push(articles[i]);
+		}
+
+		var tutoes=Session.get("totues");
+		tutoes=tutoes.split(':');
+		console.log("tutoes--"+tutoes);
+		var listTutoes=[];
+		for (var i=0;i<tutoes.length;i++){
+			if(tutoes[i]!='')
+				listTutoes.push(tutoes[i]);
+		}
+
 		var data ={
 				oldId 		:oldId,
 				price		:price,
@@ -137,7 +156,9 @@ Template.addproduct.events({
 				date		:date,
 				brand 		:brand,
 				tags        :jsonToSend,
-				attr 		:listAttr 
+				attr 		:listAttr ,
+				articles    :listArticle,
+				tutoes 		:listTutoes
 				
 		}
 		if(Router.current().route.getName()=='updateproduct'){
@@ -230,12 +251,56 @@ Template.addproduct.events({
 			html += '<div class="col-sm-3"><a class="remove glyphicon glyphicon-remove-circle"></a></div>';
 			html += '</div>';
 			$('#shophtml').append(html);
-			$("#instock").val('');
-		
-		}
-		
+			$("#instock").val('');		
+		}		
 	},
+// sokhy
+	'click #addarticle': function(e,tpl){
+		e.preventDefault();
+
+		var article=tpl.$('#article').val();
+
+		if(Session.get('article')){
+			var strArticle=article+':'+Session.get('article');
+		}else{
+			var strArticle=article;
+		}
+		//alert(strArticle);
+		Session.set("article",strArticle);		
+	},
+	'click .deleteArticle': function(e,tpl){
+		//alert(this);
+		var allArticle=Session.get('article');
+		
+		var afterdelete=allArticle.replace(this,'');	
+		//console.log('New article='+allArticle);
+		Session.set('article',afterdelete);
+	},
+	'click #btn_tuto': function(e,tpl){
+		e.preventDefault();
+		var tutoes=tpl.$('#tuto').val();
+		alert(tutoes);
+
+		if(Session.get('totues')){
+			var strTutoes=tutoes+':'+Session.get('totues');
+		}else{
+			var strTutoes=tutoes;
+		}
+		alert(strTutoes);
+		Session.set("totues",strTutoes);		
+	},
+	'click .deleteTutoes': function(e,tpl){
+		//alert(this);
+		var allTutoes=Session.get('totues');
+		
+		var afterdelete=allTutoes.replace(this,'');	
+		//console.log('New article='+allArticle);
+		Session.set('totues',afterdelete);
+	}
+// end
+
 });
+
 Template.updateproduct.events({
 	getTag: function(parentid){
 		console.log('parent='+parentid);
@@ -256,6 +321,7 @@ Template.updateproduct.events({
 		var category = $('#category').val();
 		var status = 0;
 		var ratio=100;
+		var img_id = Session.get('UPDATEIMAGEID');
 		
 
 		var alltags=Session.get('tags');
@@ -318,7 +384,7 @@ Template.updateproduct.events({
 				price		:price,
 				title		:title,
 				description	:description,
-				image		:image,
+				image		:img_id,
 				Brand		:brand,
 				CODE		:123,
 				metaTitle	:description,
@@ -336,22 +402,44 @@ Template.updateproduct.events({
 				attr 		:listAttr 
 				
 		}
+		alert("OK");
 		var id = Meteor.call('updateProduct',data);
 		console.log('ProductID:'+id);
 		//Meteor.call('addPro',title, description, price,point,img_id, category, status,ratio,jsonToSend,listAttr,priority);
 		Router.go('manageproduct');
 	},
-	/*// upload image
+	//upload image
+	// 'change #image': function(event, template) {
+ //    var files = event.target.files;
+	// 	for (var i = 0, ln = files.length; i < ln; i++) {
+	// 			images.insert(files[i], function (err, fileObj) {
+	// 			 //Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
+	// 			Session.set('UPDATEIMAGEID', fileObj._id);
+	// 		});
+	// 		//console.log(files[i]);
+	// 	}
+	// },
 	'change #image': function(event, template) {
+		//alert(this.image);
+		event.preventDefault();
+        var id=this.image;
+            images.remove(id, function(err, file) {
+            if (err) {
+              console.log('error', err);
+            } else {
+              console.log('remove success');
+              success();
+                };
+            });
+   
     var files = event.target.files;
-		for (var i = 0, ln = files.length; i < ln; i++) {
-				images.insert(files[i], function (err, fileObj) {
-				 //Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
-				Session.set('UPDATEIMAGEID', fileObj._id);
-			});
-			//console.log(files[i]);
-		}
-	},*/
+    for (var i = 0, ln = files.length; i < ln; i++) {
+      images.insert(files[i], function (err, fileObj) {
+        // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
+		Session.set('UPDATEIMAGEID', fileObj._id);
+	  });
+    }
+  },
 	'click #addshop': function(e,tpl){
 		var html = "";
 		var instock = ($("#instock").val()!="")? parseInt($("#instock").val()):"";
@@ -558,6 +646,66 @@ Template.addproduct.helpers({
 			return result.title;
 		}
 		
+	},
+	getArticle:function(){
+		var typeId=contents_type.findOne({type:"Article"})._id;
+		var result=contents.find({typeid:typeId});
+		console.log("article--- " + JSON.stringify(result));
+		return result;
+		//return contents_type.find({});
+	},
+	getTypeName:function(typeid){
+		return contents_type.findOne({_id:typeid}).type;
+	},
+	getContentArt:function(){
+		var arr=[];
+		var getArt = Session.get("article");
+		var arrAtrticle=getArt.split(':');
+		for(var i=0;i<arrAtrticle.length;i++){
+			if(arrAtrticle[i]!==""){
+				arr.push(arrAtrticle[i]);
+			}
+			
+		}
+		return arr;
+
+	},
+	getTitle:function(id){
+		return contents.findOne({_id:id}).title;
+	},
+
+// sokhy tuto
+	getTutoes:function(){
+		var tutoId=contents_type.findOne({type:"Tuto"})._id;
+		console.log("tutoId-- "+tutoId);
+		var result=contents.find({typeid:tutoId});
+		return result;
+	},
+	getContentTutoes:function(){
+		var arr=[];
+		var getTutoes = Session.get("totues");
+		var arrTutoes=getTutoes.split(':');
+		for(var i=0;i<arrTutoes.length;i++){
+			if(arrTutoes[i]!==""){
+				arr.push(arrTutoes[i]);
+			}
+			
+		}
+		return arr;
+
+	},
+		getContenttuto:function(){
+		var arr=[];
+		var getAlltuto = Session.get("tuto");
+		var arrAlltutoes=getAlltuto.split(':');
+		for(var i=0;i<arrAlltutoes.length;i++){
+			if(arrAlltutoes[i]!==""){
+				arr.push(arrAlltutoes[i]);
+			}
+			
+		}
+		return arr;
+
 	},
 });
 
@@ -828,8 +976,11 @@ Template.manageproduct.helpers({
 });
 
 Template.details.helpers({
-	articles: function(title){
+	suggestion: function(title){
 		return contents.find({"content":{"$regex":title}});
+	},
+	getArticle: function(idarticle){
+		return contents.findOne({"_id":idarticle});
 	},
 	getAllAttributes: function(productId,parent){
 		return attribute.find({"product":productId,"parent":parent});

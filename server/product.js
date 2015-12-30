@@ -20,7 +20,9 @@ Meteor.methods({
 				priority	:prod.priority,
 				shop		:prod.shop,
 				date		:prod.date,
-				tags        :prod.tags
+				tags        :prod.tags,
+				articles	:prod.articles,
+				tutoes      :prod.tutoes
 		};
 		var productId=products.insert(attributes);
 
@@ -61,7 +63,9 @@ Meteor.methods({
 				priority	:prod.priority,
 				shop		:prod.shop,
 				date		:prod.date,
-				tags        :prod.tags
+				tags        :prod.tags,
+				articles	:prod.articles,
+				tutoes      :prod.tutoes
 		};
 		var productId=products.update({"_id":prod._id},{$set :attributes});
 
@@ -116,5 +120,8 @@ Meteor.methods({
 	},
 	addlistPro:function(obj){
 		return list_product.insert(obj);
+	},
+	insertAddress:function(id,obj){
+		users.update({_id:id}, {$set:obj});
 	}
 });
