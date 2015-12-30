@@ -1,4 +1,3 @@
-
 <template name="listproducts">
 
 {{> myrefine}}
@@ -17,13 +16,9 @@
 					</div>
 
 		<div class="hold_product">
-			
-<<<<<<< HEAD
-		
+	
+				{{#each products}}
 				
-=======
-				{{#each getAllListPro}}
->>>>>>> 260819a68fb26054db3bc3e1b46761ae63c65798
 
 				<div class="col-xs-6 col-md-3 product_item">
 						<div class="thumbnail text-left">
@@ -55,7 +50,7 @@
 
 								</div>
 							</div>
-				
+				{{/each}}
 				
 			
 		</div>
