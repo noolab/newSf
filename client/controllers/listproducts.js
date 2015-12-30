@@ -45,6 +45,7 @@ Template.listproducts.helpers({
 	},
 	getAllListPro:function(){
 		var toSort =  Session.get("GETName");
+		console.log('SORT:'+toSort);
 		if(toSort == "name"){
 			return products.find({},{sort:{title:1}});
 		}else if(toSort == "price"){

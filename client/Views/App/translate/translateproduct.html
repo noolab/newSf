@@ -8,12 +8,18 @@
 
 			<form role="form">
 					<input type="hidden" class="form-control" name="idproduct" id="idproduct" value="{{_id}}">
+					<label>Language</label><br>
+					<select id="lang">
+					  <option value="en">English</option>
+					  <option value="fa">Farsi</option>
+					</select><br>
 					<label>Title</label><br>
 					<input type="text" class="form-control" name="title" id="title" value="{{i18n.fa.title}}" required><br>
 					<label>Description</label><br>
 					<textarea class="form-control" col="5" row="3" value="{{i18n.fa.description}}" name="description" id="description" required></textarea>
 					<label>Brand</label><br>
 					<input type="text" class="form-control" name="brand" id="brand" value="{{i18n.fa.brand}}" required><br>
+
 					<label>CODE</label><br>
 					<input type="text" class="form-control" name="code" id="code" value="{{i18n.fa.code}}" required><br>
 					<label>MetaTitle</label><br>

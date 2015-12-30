@@ -1226,9 +1226,9 @@ Template.addproduct.rendered = function(){
 
 	};
 	Template.details.events({
-		'click #btnMore':function(e){
+		'click .morereview':function(e){
 			e.preventDefault();
-			alert();
+			//alert();
 			var last = Session.get('numberOfReviews');
 			var sum = Number(last) + 5;
 			var update = Session.set('numberOfReviews',sum);

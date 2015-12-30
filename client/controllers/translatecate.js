@@ -3,10 +3,11 @@ Template.translate_category.events({
 		e.preventDefault();
 		var title = $('#title').val();
 		var cateid=$('#idcate').val();
+		var lang = $('#lang').val(); 
 		var obj ={
 			title:title
 		};
-		Meteor.call('insertTrade',obj,cateid);
+		Meteor.call('insertTradeCategory',obj,cateid,lang);
 		alert("Successful update");
 	}
 });
@@ -15,10 +16,11 @@ Template.translateparentTag.events({
 		e.preventDefault();
 		var title = $('#title').val();
 		var parenttagid=$('#idparenttags').val();
+		var lang = $('#lang').val(); 
 		var obj ={
 			title:title
 		};
-		Meteor.call('insertparentTag',obj,parenttagid);
+		Meteor.call('insertTradparentTag',obj,parenttagid,lang);
 		alert("Successful update");
 	}
 });
@@ -27,10 +29,11 @@ Template.translatTags.events({
 		e.preventDefault();
 		var title = $('#title').val();
 		var tagid=$('#idtags').val();
+		var lang = $('#lang').val(); 
 		var obj ={
 			title:title
 		};
-		Meteor.call('insertTags',obj,tagid);
+		Meteor.call('insertTradTags',obj,tagid,lang);
 		alert("Successful update");
 	}
 });
@@ -39,10 +42,11 @@ Template.translatParent_attr.events({
 		e.preventDefault();
 		var title = $('#title').val();
 		var parentattrid=$('#idParentattr').val();
+		var lang = $('#lang').val(); 
 		var obj ={
 			title:title
 		};
-		Meteor.call('insertparentattr',obj,parentattrid);
+		Meteor.call('insertTradparentattr',obj,parentattrid,lang);
 		alert("Successful update");
 	}
 });
@@ -51,10 +55,11 @@ Template.transleattribute_value.events({
 		e.preventDefault();
 		var title = $('#title').val();
 		var attrid=$('#idattr').val();
+		var lang = $('#lang').val(); 
 		var obj ={
 			title:title
 		};
-		Meteor.call('insertAttri',obj,attrid);
+		Meteor.call('insertTradAttri',obj,attrid,lang);
 		alert("Successful update");
 	}
 });
@@ -63,10 +68,11 @@ Template.transleshops.events({
 		e.preventDefault();
 		var title = $('#title').val();
 		var shopid=$('#idshops').val();
+		var lang = $('#lang').val(); 
 		var obj ={
 			title:title
 		};
-		Meteor.call('insertshops',obj,shopid);
+		Meteor.call('insertTradshops',obj,shopid,lang);
 		alert("Successful update");
 	}
 });
