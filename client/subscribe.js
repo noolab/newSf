@@ -24,5 +24,6 @@ Meteor.subscribe("journey");
 Meteor.subscribe("linkselling");
 Meteor.subscribe("membershipcard");
 Meteor.subscribe("list_product");
-Meteor.subscribe("attribute_value");order
+Meteor.subscribe("attribute_value");
 Meteor.subscribe("order");
+Meteor.subscribe("translation");
