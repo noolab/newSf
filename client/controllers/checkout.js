@@ -174,6 +174,7 @@ Template.confirmorder.events({
 		
 	
 		Meteor.call('updateOrder',id,obj);
+		alert('successful change');
 	
 	},
 	'click #btnAdd':function(e){
@@ -191,5 +192,6 @@ Template.confirmorder2.events({
 			deliverytype:delivery
 		}
 		Meteor.call('updateOrder',idorder,obj);
+		alert('successful updated');
 	}
 });
