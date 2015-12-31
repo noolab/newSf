@@ -7,6 +7,7 @@ Template.translateproduct.events({
 		var brand = $('#brand').val();
 		var metaTitle = $('#metaTitle').val(); 
 		var metaKey = $('#metaKey').val(); 
+		var collection="products";
 		var lang = $('#lang').val(); 
 		var productid=this._id;
 
@@ -18,12 +19,22 @@ Template.translateproduct.events({
 			metaTitle:metaTitle,
 			metaKey:metaKey
 		};
-		var object={
-			productid:productid,
-			i18n:{en:obj}
+
+		if(lang=='en'){
+			var object={
+				id:productid,
+				collectionName:collection,
+				i18n:{en:obj}
+			}
+		}else{
+			var object={
+				id:productid,
+				collectionName:collection,
+				i18n:{fa:obj}
+			}
 		}
 		console.log('MYOBJ'+JSON.stringify(obj));
-		Meteor.call('insertTran',object,lang, function(err){
+		Meteor.call('insertTran',object,collection,lang, function(err){
 			if(err){
 				console.log(err+reason);
 			}else{

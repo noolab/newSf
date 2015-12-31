@@ -3,17 +3,26 @@ Template.translate_category.events({
 		e.preventDefault();
 		var title = $('#title').val();
 		var cateid=this._id;
+		var collection= "categories"; 
 		var lang = $('#lang').val(); 
 		var obj ={
 			title:title
 		};
 		
-		var object={
-			cateid:cateid,
-			i18n:{en:obj}
+		if(lang=='en'){
+			var object={
+				id:cateid,
+				collectionName:collection,
+				i18n:{en:obj}
+			}
+		}else{
+			var object={
+				id:cateid,
+				collectionName:collection,
+				i18n:{fa:obj}
+			}
 		}
-
-		Meteor.call('insertTradeCategory',object,cateid,lang, function(err){
+		Meteor.call('insertTradeCategory',object,cateid,collection,lang, function(err){
 			if(err){
 				console.log(err);
 			}else{
@@ -28,17 +37,26 @@ Template.translateparentTag.events({
 		e.preventDefault();
 		var title = $('#title').val();
 		var parenttagid=this._id;
+		var collection="parent_tags";
 		var lang = $('#lang').val(); 
 		var obj ={
 			title:title
 		};
-		
-		var object={
-			parenttagid:parenttagid,
-			i18n:{en:obj}
+		if(lang=='en'){
+			var object={
+				id:parenttagid,
+				collectionName:collection,
+				i18n:{en:obj}
+			}
+		}else{
+			var object={
+				id:parenttagid,
+				collectionName:collection,
+				i18n:{fa:obj}
+			}
 		}
 
-		Meteor.call('insertTradparentTag',object,parenttagid,lang, function(err){
+		Meteor.call('insertTradparentTag',object,parenttagid,collection,lang, function(err){
 			if(err){
 				console.log(err);
 			}else{
@@ -53,18 +71,27 @@ Template.translatTags.events({
 		e.preventDefault();
 		var title = $('#title').val();
 		var tagid=this._id;
+		var collection="tags";
 		var lang = $('#lang').val(); 
 
 		var obj ={
 			title:title
 		};
-		
-		var object={
-			tagid:tagid,
-			i18n:{en:obj}
+		if(lang=='en'){
+			var object={
+				id:tagid,
+				collectionName:collection,
+				i18n:{en:obj}
+			}
+		}else{
+			var object={
+				id:tagid,
+				collectionName:collection,
+				i18n:{fa:obj}
+			}
 		}
 
-		Meteor.call('insertTradTags',object,tagid,lang, function(err){
+		Meteor.call('insertTradTags',object,tagid,collection,lang, function(err){
 			if(err){
 				console.log(err);
 			}else{
@@ -78,38 +105,100 @@ Template.translatParent_attr.events({
 	'submit form':function(e){
 		e.preventDefault();
 		var title = $('#title').val();
-		var parentattrid=$('#idParentattr').val();
+		var parentattrid=this._id;
+		var collection="parentattr";
 		var lang = $('#lang').val(); 
 		var obj ={
 			title:title
 		};
-		Meteor.call('insertTradparentattr',obj,parentattrid,lang);
-		alert("Successful update");
+		if(lang=='en'){
+			var object={
+				id:parentattrid,
+				collectionName:collection,
+				i18n:{en:obj}
+			}
+		}else{
+			var object={
+				id:parentattrid,
+				collectionName:collection,
+				i18n:{fa:obj}
+			}
+		}
+		Meteor.call('insertTradparentattr',object,parentattrid,collection,lang, function(err){
+			if(err){
+				console.log(err);
+			}else{
+				alert("Successful update");
+				Router.go('/parentattr');
+			}
+		});
 	}
 });
 Template.transleattribute_value.events({
 	'submit form':function(e){
 		e.preventDefault();
 		var title = $('#title').val();
-		var attrid=$('#idattr').val();
+		var attrid=this._id;
+		var collection="attribute_value";
 		var lang = $('#lang').val(); 
 		var obj ={
 			title:title
 		};
-		Meteor.call('insertTradAttri',obj,attrid,lang);
-		alert("Successful update");
+		if(lang=='en'){
+			var object={
+				id:attrid,
+				collectionName:collection,
+				i18n:{en:obj}
+			}
+		}else{
+			var object={
+				id:attrid,
+				collectionName:collection,
+				i18n:{fa:obj}
+			}
+		}
+
+		Meteor.call('insertTradAttri',object,attrid,collection,lang, function(err){
+			if(err){
+				console.log(err);
+			}else{
+				alert("Successful update");
+				Router.go('/attribute');
+			}
+		});
 	}
 });
+
 Template.transleshops.events({
 	'submit form':function(e){
 		e.preventDefault();
 		var title = $('#title').val();
-		var shopid=$('#idshops').val();
+		var shopid=this._id;
+		var collection="shops";
 		var lang = $('#lang').val(); 
 		var obj ={
 			title:title
 		};
-		Meteor.call('insertTradshops',obj,shopid,lang);
-		alert("Successful update");
+		if(lang=='en'){
+			var object={
+				id:shopid,
+				collectionName:collection,
+				i18n:{en:obj}
+			}
+		}else{
+			var object={
+				id:shopid,
+				collectionName:collection,
+				i18n:{fa:obj}
+			}
+		}
+		Meteor.call('insertTradshops',object,shopid,collection,lang, function(err){
+			if(err){
+				console.log(err);
+			}else{
+				alert("Successful update");
+				Router.go('/manageshop');
+			}
+		});
 	}
 });
