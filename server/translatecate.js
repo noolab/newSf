@@ -1,60 +1,60 @@
 Meteor.methods({
-	insertTradeCategory: function(obj,idcate,lang){
+	insertTradeCategory: function(obj,cateid,lang){
 		console.log('MY CALL'+JSON.stringify(obj));
-		console.log('IDPRODUCT: '+idcate);
+		console.log('Cateid: '+cateid);
 		if(lang=="en")
-			categories.update({"_id":idcate},{"$set":{"i18n.en":obj}});
+			translation.insert(obj);
 		else
-			categories.update({"_id":idcate},{"$set":{"i18n.fa":obj}});
+			translation.insert(obj);
 	}
 });
 Meteor.methods({
-	insertTradparentTag: function(obj,idparenttags,lang){
+	insertTradparentTag: function(obj,parenttagid,lang){
 		console.log('MY CALL'+JSON.stringify(obj));
-		console.log('IDPRODUCT: '+idparenttags);
+		console.log('parenttagid: '+parenttagid);
 		if(lang=="en")
-			parent_tags.update({"_id":idparenttags},{"$set":{"i18n.en":obj}});
+			translation.insert(obj);
 		else
-			parent_tags.update({"_id":idparenttags},{"$set":{"i18n.fa":obj}});
+			translation.insert(obj);
 	}
 });
 Meteor.methods({
-	insertTradTags: function(obj,idtags,lang){
+	insertTradTags: function(obj,tagid,lang){
 		console.log('MY CALL'+JSON.stringify(obj));
-		console.log('IDPRODUCT: '+idtags);
+		console.log('IDTAG: '+tagid);
 		if(lang=="en")
-			tags.update({"_id":idtags},{"$set":{"i18n.en":obj}});
+			translation.insert(obj);
 		else
-			tags.update({"_id":idtags},{"$set":{"i18n.fa":obj}});
+			translation.insert(obj);
 	}
 });
 Meteor.methods({
-	insertTradparentattr: function(obj,idParentattr,lang){
+	insertTradparentattr: function(obj,parentattrid,lang){
 		console.log('MY CALL'+JSON.stringify(obj));
-		console.log('IDPRODUCT: '+idParentattr);
+		console.log('parentattrid: '+parentattrid);
 		if(lang=="en")
-			parentattr.update({"_id":idParentattr},{"$set":{"i18n.en":obj}});
+			translation.insert(obj);
 		else
-			parentattr.update({"_id":idParentattr},{"$set":{"i18n.fa":obj}});
+			translation.insert(obj);
 	}
 });
 Meteor.methods({
-	insertTradAttri: function(obj,idattr,lang){
+	insertTradAttri: function(obj,attrid,lang){
 		console.log('MY CALL'+JSON.stringify(obj));
-		console.log('IDPRODUCT: '+idattr);
+		console.log('attrid: '+attrid);
 		if(lang=="en")
-			attribute_value.update({"_id":idattr},{"$set":{"i18n.en":obj}});
+			translation.insert(obj);
 		else
-			attribute_value.update({"_id":idattr},{"$set":{"i18n.fa":obj}});
+			translation.insert(obj);
 	}
 });
 Meteor.methods({
-	insertTradshops: function(obj,idshops,lang){
+	insertTradshops: function(obj,shopid,lang){
 		console.log('MY CALL'+JSON.stringify(obj));
-		console.log('IDPRODUCT: '+idshops);
+		console.log('shopid: '+shopid);
 		if(lang=="en")
-			shops.update({"_id":idshops},{"$set":{"i18n.en":obj}});
+			translation.insert(obj);
 		else
-			shops.update({"_id":idshops},{"$set":{"i18n.fa":obj}});
+			translation.insert(obj);
 	}
 });

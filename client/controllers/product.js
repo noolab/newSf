@@ -990,6 +990,9 @@ Template.details.helpers({
 	getArticle: function(idarticle){
 		return contents.findOne({"_id":idarticle});
 	},
+	getTutoes: function(idtutoes){
+		return contents.findOne({"_id":idtutoes});
+	},
 	getAllAttributes: function(productId,parent){
 		return attribute.find({"product":productId,"parent":parent});
 	},

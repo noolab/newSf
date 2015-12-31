@@ -25,5 +25,8 @@ Meteor.methods({
 	},
 	updateCart: function(id,qty,subtotal){
 		cart.update(id, {$set: {quantity: qty, subtotal:subtotal}});
+	},
+	updateStatus:function(id,obj){
+		cart.update({_id:id},{$set:obj});
 	}
 });

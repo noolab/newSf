@@ -6,12 +6,12 @@ Template.checkout.helpers({
 		if(Meteor.userId()){
 			userid = Meteor.userId();
 			if( userid ){
-				mycart = cart.find({userId:userid});
+				mycart = cart.find({$and:[{order_status:0},{userId:userid}]});
 			}
 		}else{
 			userid = Session.get('userId');
 			if( userid ){
-				mycart = cart.find({userId:userid});
+				mycart = cart.find({$and:[{order_status:0},{userId:userid}]});
 			}
 		}
 		var total = 0;
@@ -69,12 +69,12 @@ Template.checkout.events({
 		if(Meteor.userId()){
 			userid = Meteor.userId();
 			if( userid ){
-				mycart = cart.find({userId:userid});
+				mycart = cart.find({$and:[{order_status:0},{userId:userid}]});
 			}
 		}else{
 			userid = Session.get('userId');
 			if( userid ){
-				mycart = cart.find({userId:userid});
+				mycart = cart.find({$and:[{order_status:0},{userId:userid}]});
 			}
 		}
 		var total = 0;
@@ -103,28 +103,36 @@ Template.checkout.events({
 		if(Meteor.userId()){
 			userid = Meteor.userId();
 			if( userid ){
-				mycart = cart.find({userId:userid});
+				mycart = cart.find({$and:[{order_status:0},{userId:userid}]});
 			}
 		}else{
 			userid = Session.get('userId');
 			if( userid ){
-				mycart = cart.find({userId:userid});
+				mycart = cart.find({$and:[{order_status:0},{userId:userid}]});
 			}
 		}
 		var total = 0;
-		alert("My"+JSON.stringify(mycart.fetch()[0]));
+		//alert("My"+JSON.stringify(mycart.fetch()[0]));
 		//Session.set("allcart", mycart);
 		mycart.forEach( function(value){
 			total = total + value.subtotal;
 			
-			alert("My"+JSON.stringify(obj));
+			//alert("My"+JSON.stringify(obj));
 			arrCartId.push(value._id);
+			var objStatus={
+				order_status:1
+			}
+			Meteor.call('updateStatus',value._id,objStatus);
 			
 		});
+		Session.setPersistent('orderId',Random.id());
 		var obj={
+			userid:Meteor.userId(),
 			cartId:arrCartId,
+			orderId:Session.get('orderId'),
 			total:total
 		}
+		
 		Meteor.call('insertOrder',obj);
 		
 
@@ -141,22 +149,49 @@ Template.confirmorder.helpers({
 	getprofile:function(){
 		var id = Meteor.userId();
 		return Meteor.users.findOne({_id:id});
+	},
+	getAddress1:function(){
+		var id = Meteor.userId();
+		return Meteor.users.findOne({_id:id}).profile.address;
 	}
 });
 Template.confirmorder.events({
-	'click #btnAdd':function(e){
+	'submit form':function(e){
 		e.preventDefault();
-		var id = Meteor.userId();
+		var id = Session.get('orderId');
 		var address = $('#address').val();
-		alert(address);
-		var obj = {
-			address:address
+		var address1=$('input[name=address1]:checked').val();
+		if(address){
+			var addresses=address;
+		}else{
+			var addresses=address1
 		}
-		Meteor.call('insertAddress',id,obj);
-		alert("love love");
+		//alert(addresses);
+		
+		var obj = {
+			address:addresses
+		}
+		
+	
+		Meteor.call('updateOrder',id,obj);
+		alert('successful change');
+	
 	},
 	'click #btnAdd':function(e){
 		e.preventDefault();
 		Router.go("/confirmorder");
+	}
+});
+Template.confirmorder2.events({
+	'submit form':function(e){
+		e.preventDefault();
+		var idorder = Session.get('orderId');
+		alert(idorder);
+		var delivery = $('#sel1').val();
+		var obj = {
+			deliverytype:delivery
+		}
+		Meteor.call('updateOrder',idorder,obj);
+		alert('successful updated');
 	}
 });

@@ -51,12 +51,12 @@ Template.registerHelper('getCart', function (curdate) {
             userid = Meteor.userId();
 
             if( userid ){
-                mycart = cart.find({userId:userid});
+                mycart = cart.find({$and:[{order_status:0},{userId:userid}]});
             }
         }else{
             userid = Session.get('userId');
             if( userid ){
-                mycart = cart.find({userId:userid});
+                mycart = cart.find({$and:[{order_status:0},{userId:userid}]});
             }
         }
         console.log('cart id='+userid);
