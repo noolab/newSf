@@ -15,3 +15,9 @@ Template.dailyPopup.helpers({
 			return contents.find({typeid:"FuMaf3acLZwarAPwh"},{limit:1});
 		}
 });
+Template.dailyPopup.events({
+	'click #x-close':function(e){
+		e.preventDefault();
+		Router.go('/profile');
+	}
+});
