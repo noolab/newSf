@@ -25,7 +25,7 @@ Template.cart.helpers({
 Template.payment.helpers({
 	
 	pay: function(){
-		Meteor.call('testSoap',function(err,res){
+		Meteor.call('api',function(err,res){
 			console.log('ERROR:');
 			console.log(err);
 			console.log('RESULT');

@@ -25,5 +25,37 @@ Meteor.methods({
         return err;
 
 }
-    }
+    },
+    api: function() {
+    //console.log("MY ID "+apiId);
+    //console.log("MY Amount "+amount);
+    /*
+    var answer=HTTP.call("POST", "https://sep.shaparak.ir/payment.aspx",
+          {
+            params: {
+              //body: "ResNum=ABC&MID=10443844&RedirectURL=http%3A%2F%2Frequestb.in%2F1ckopdl1%3Finspect&Amount=10000"
+              Amount: 10000, 
+              ResNum:"ABCD",
+              MID: "10443844",
+              RedirectURL:"http://requestb.in/1grdetb1/"
+           }
+         });
+    console.log(answer);*/
+    var request = Meteor.npmRequire("request");
+    var options={
+      url:'https://sep.shaparak.ir/payment.aspx',
+      params:{
+              Amount: 10000, 
+              ResNum:"ABCD",
+              MID: "10443844",
+              RedirectURL:"http://requestb.in/1grdetb1/"
+      }
+    };
+    request(options,function callback(error, response, body) {
+        console.log(error);
+        console.log(response);
+        console.log(body);
+})
+    return answer;
+  }
   });
