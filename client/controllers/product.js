@@ -44,13 +44,13 @@ Template.addproduct.events({
 	},
 	'click #btnAdd': function(e){
 		e.preventDefault();
-		//alert("bb");
+		alert("bb");
 		var title = $('#title').val();
 		var description =CKEDITOR.instances.editor1.getData();//$('#editor1').val();// $('.froala-element').html();//froala-element
 		var price = -1;//$('#price').val();
 		var point = -1; //$('#point').val();
 		var priority = $('#priority').val();
-		//var image = $('#image').val();
+		var image = $('#image').val();
 		var brand = $('#brand').val();
 		var img_id = Session.get('ADDIMAGEID');
 		var text = 0;
@@ -61,8 +61,8 @@ Template.addproduct.events({
 		var ratio=100;
 		
 
-		//console.log('IMAGE='+image);
-		//console.log('IMGE_ID='+img_id);
+		console.log('IMAGE='+image);
+		console.log('IMGE_ID='+img_id);
 
 		var alltags=Session.get('tags');
 		alltags=alltags.split(';');
@@ -149,7 +149,7 @@ Template.addproduct.events({
 				price		:price,
 				title		:title,
 				description	:description,
-				image		:img_id,
+				image		:image,
 				Brand		:brand,
 				CODE		:123,
 				metaTitle	:description,
@@ -972,6 +972,7 @@ Template.manageproduct.helpers({
 	,
 	// upload image
 	getImage: function(id){
+
 			var img = images.findOne({_id:id});
 			if(img){
 				console.log(img.copies.images.key);

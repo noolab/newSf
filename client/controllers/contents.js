@@ -21,15 +21,14 @@ Template.addContent.events({
 		console.log("Inserted");
 	},
 	'change #image': function(event, template) {
-		event.preventDefault();
-	    var files = event.target.files;
-	    for (var i = 0, ln = files.length; i < ln; i++) {
-	      images.insert(files[i], function (err, fileObj) {
-	      	console.log('inserted image: '+fileObj);
-	      	console.log('error:'+JSON.stringify(err));
-	        // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
-			Session.set('ADDIMAGEID', fileObj._id);
-		 });
+    var files = event.target.files;
+    for (var i = 0, ln = files.length; i < ln; i++) {
+      images.insert(files[i], function (err, fileObj) {
+      	console.log('inserted image: '+fileObj);
+      	console.log('error:'+JSON.stringify(err));
+        // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
+		Session.set('ADDIMAGEID', fileObj._id);
+	  });
     }
   }
 });
@@ -80,7 +79,6 @@ Template.updateContent.events({
 		//alert(this.image);
 		event.preventDefault();
         var id=this.image;
-        alert(id);
             images.remove(id, function(err, file) {
             if (err) {
               console.log('error', err);
@@ -121,17 +119,7 @@ Template.webzinelisting.helpers({
 		i = i +1;
 		if( i <= 1 ) return false;
 		else return true;
-	},
-	     getImage: function(id){
-            var img = images.findOne({_id:id});
-            if(img){
-                console.log(img.copies.images.key);
-                return img.copies.images.key;
-            }
-            else{
-                return;
-            }
-    }
+	}
 });
 Session.set("commentValidation","");
 Template.webzinedetails.helpers({
@@ -287,17 +275,7 @@ Template.managecontent.helpers({
 	getCatname: function(){
 		var id = this.category;
 		return categories.findOne({_id:id}).title;
-	},
-	getImg: function(id){
-            var img = images.findOne({_id:id});
-            if(img){
-                console.log(img.copies.images.key);
-                return img.copies.images.key;
-            }
-            else{
-                return;
-            }
-    }
+	}
 });
 //Remove all content
 Template.managecontent.events({
