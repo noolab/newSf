@@ -44,7 +44,7 @@ Template.quizz.events({
 		var j=journey.find({"parent":Session.get('parentAnswer')}).fetch();
 		if(j.length==0){
 			Session.set('finishQuizz','yes');
-			//$('#myJourney').modal('hide');
+			$('#myJourney').modal('hide');
 			console.log('listTag:'+list);
 
 		}
@@ -65,7 +65,11 @@ Template.quizz.events({
 });
 
 Template.quizz.onRendered(function () {
-	
+
+	if(Session.get('finishQuizz')=='yes')
+			$('#myJourney').modal('hide');
+	else
+			$('#myJourney').modal('show');
 	//console.log("Quizz of "+this.data._id);
   // Use the Packery jQuery plugin
   //var curCategory=Session.get('currentCategory');

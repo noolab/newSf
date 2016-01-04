@@ -42,20 +42,75 @@ Meteor.methods({
          });
     console.log(answer);*/
     var request = Meteor.npmRequire("request");
+    var query = Meteor.npmRequire("querystring");
+
+    /*
     var options={
       url:'https://sep.shaparak.ir/payment.aspx',
-      params:{
-              Amount: 10000, 
-              ResNum:"ABCD",
-              MID: "10443844",
-              RedirectURL:"http://requestb.in/1grdetb1/"
+      method: 'POST',
+      postData: {
+        mimeType: 'application/x-www-form-urlencoded',
+        params:[{
+                    name: "Amount",
+                    value: 10000
+                    
+            },
+            {
+                    name: "ResNum",
+                    value: "ABCD"
+                    
+            },
+            {
+                    name: "MID",
+                    value: "10443844"
+                    
+            },
+            {
+                    name: "RedirectURL",
+                    value: "http://requestb.in/1grdetb1/"
+                    
+            }
+            ]
       }
+      
     };
-    request(options,function callback(error, response, body) {
+    var options={
+      url:'https://sep.shaparak.ir/payment.aspx',
+      form: {
+                    Amount: 10000, 
+                    ResNum:"ABCD",
+                    MID: "10443844",
+                    RedirectURL:"http://requestb.in/wxzk9dwy"
+      }
+    };*/
+    var postData={
+                            Amount: 10000, 
+                            ResNum:"ABCD",
+                            MID: "10443844",
+                            RedirectURL:"http://requestb.in/wxzk9dwy"
+    };
+
+    var options = {
+        url: "https://sep.shaparak.ir/payment.aspx",
+        headers:{'content-type': 'application/x-www-form-urlencoded'},
+        body:query.stringify(postData)
+
+    };
+
+    request.post(options,function callback(error, response, body) {
         console.log(error);
         console.log(response);
         console.log(body);
-})
-    return answer;
+});
+    return 1;
   }
   });
+
+/*
+
+Amount: 10000, 
+                    ResNum:"ABCD",
+                    MID: "10443844",
+                    RedirectURL:"http://requestb.in/1grdetb1/"
+
+                    */
