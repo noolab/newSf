@@ -25,7 +25,12 @@ Template.cart.helpers({
 Template.payment.helpers({
 	
 	pay: function(){
-		Meteor.call('pay');
+		Meteor.call('api',function(err,res){
+			console.log('ERROR:');
+			console.log(err);
+			console.log('RESULT');
+			console.log(res);
+		});
 	}
 	
 });

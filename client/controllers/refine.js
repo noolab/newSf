@@ -150,7 +150,7 @@ Template.myrefine.helpers({
 		letter=letter.toUpperCase();
 		var myBrands=[];
 		var liste=products.find().fetch();
-		console.log("Processing2:"+liste.length);
+		//console.log("Processing2:"+liste.length);
 		for(var i=0;i<liste.length;i++){
 			if(liste[i].hasOwnProperty('Brand')){
 				//console.log('Brand:'+liste[i].Brand);
@@ -174,7 +174,7 @@ Template.myrefine.helpers({
 			var product=products.findOne({"_id":productId});
 			currentCategory=product.category;
 		}else if(route=='listing'){
-			console.log('Entering category page');
+			//console.log('Entering category page');
 			currentCategory=Router.current().params.id;
 		}
 		else{
@@ -182,7 +182,7 @@ Template.myrefine.helpers({
 			return;
 		}
 
-		console.log("currentCat="+currentCategory);
+		//console.log("currentCat="+currentCategory);
 		var listCategories=[];
 		var obj=categories.findOne({"_id":currentCategory});
 		while(obj!= null && obj.parent!="0"){
@@ -196,9 +196,9 @@ Template.myrefine.helpers({
 		for(var i=listCategories.length-1;i>=0;i--)
 			res.push(listCategories[i]);
 
-		console.log('route:'+route);
-		console.log('pyramide:'+res.length);
-		console.log(JSON.stringify(res));
+		//console.log('route:'+route);
+		//console.log('pyramide:'+res.length);
+		//console.log(JSON.stringify(res));
 		return res;
 	},
 	currentLetter: function(){

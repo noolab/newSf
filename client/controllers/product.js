@@ -50,7 +50,7 @@ Template.addproduct.events({
 		var price = -1;//$('#price').val();
 		var point = -1; //$('#point').val();
 		var priority = $('#priority').val();
-		var image = $('#image').val();
+		//var image = $('#image').val();
 		var brand = $('#brand').val();
 		var img_id = Session.get('ADDIMAGEID');
 		var text = 0;
@@ -61,8 +61,8 @@ Template.addproduct.events({
 		var ratio=100;
 		
 
-		console.log('IMAGE='+image);
-		console.log('IMGE_ID='+img_id);
+		//console.log('IMAGE='+image);
+		//console.log('IMGE_ID='+img_id);
 
 		var alltags=Session.get('tags');
 		alltags=alltags.split(';');
@@ -119,29 +119,37 @@ Template.addproduct.events({
 			data_shop.push({shopid:shopid[i],instock:instock[i]});
 		}
 
-		var articles=Session.get('article');
-		articles=articles.split(':');
-		var listArticle=[];
-		for(var i=0;i<articles.length;i++){
-			if(articles[i]!='')
-				listArticle.push(articles[i]);
-		}
 
-		var tutoes=Session.get("totues");
-		tutoes=tutoes.split(':');
-		console.log("tutoes--"+tutoes);
-		var listTutoes=[];
-		for (var i=0;i<tutoes.length;i++){
-			if(tutoes[i]!='')
-				listTutoes.push(tutoes[i]);
+		var listArticle=[];
+		if(Session.get('article')){
+			var articles=Session.get('article');
+			articles=articles.split(':');
+			
+			for(var i=0;i<articles.length;i++){
+				if(articles[i]!='')
+					listArticle.push(articles[i]);
+			}
 		}
+		
+		var listTutoes=[];
+		if(Session.get('totues')){
+			var tutoes=Session.get("totues");
+			tutoes=tutoes.split(':');
+			console.log("tutoes--"+tutoes);
+			
+			for (var i=0;i<tutoes.length;i++){
+				if(tutoes[i]!='')
+					listTutoes.push(tutoes[i]);
+			}
+		}
+		
 
 		var data ={
 				oldId 		:oldId,
 				price		:price,
 				title		:title,
 				description	:description,
-				image		:image,
+				image		:img_id,
 				Brand		:brand,
 				CODE		:123,
 				metaTitle	:description,
@@ -964,7 +972,6 @@ Template.manageproduct.helpers({
 	,
 	// upload image
 	getImage: function(id){
-
 			var img = images.findOne({_id:id});
 			if(img){
 				console.log(img.copies.images.key);
