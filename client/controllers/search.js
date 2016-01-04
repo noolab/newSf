@@ -122,7 +122,9 @@ Template.header.events({
 	'click .search-btn': function(e){
 		e.preventDefault();
 		var key = $(".input-search").val();
+        alert(key);
 		var groupid = $("#group-text").attr("data-selected");
+        alert(groupid);
 		Session.set('keyword', key);
 		Session.set('groupsearch', groupid);
 	
