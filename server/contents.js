@@ -5,7 +5,7 @@ Meteor.methods({
 	//var userid = Meteor.user(this._id);
 	var author = Meteor.userId();
   	var attributes={
-  	title:title,
+  		title:title,
 		content:content,
 		typeid:typeid,
 		date:date,
