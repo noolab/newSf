@@ -1,0 +1,138 @@
+<template name="dailyPopup">
+	<div class="bg-daily-popup" >	
+		<section id="produst_listing">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+                       <div style="">
+               
+                <!-- popup -->
+
+	              <div class="modal"  id="squarespaceModal" tabindex="-1" role="dialog" 
+	                    aria-labelledby=" modalLabel" 
+			             aria-hidden="true" style="padding-top: 200px; padding-bottom: 80px; display: none;">
+						  <div class="modal-dialog modal-lg">
+						    <div class="modal-content">	
+				               <div class="modal-body">
+				                <button type="button" class="close" data-dismiss="modal">
+					                <span aria-hidden="true">x</span>
+					                <span class="sr-only">Close</span>
+				                </button>
+					             <div class="wrap-big-popup">    
+		                          <h4>WELCOME TO SAFIR.</h4> 
+		                          <h4 class="space-bootom-popup">TRY A PRODUCT SELECTION , FOR YOUR PROFILE :</h4>   
+		                          	 
+		                     	     <div class="ui-field-contain">
+		                               <div class="row">
+		                               	{{#each getPopup}}
+		                                  <div class="wrap-product-pop">
+											  <div class="col-md-3">
+											   <img src="/upload/{{getImg image}}" class="img-responsive">
+											   <p>{{title}}</p>
+											   <p class="price-pop">{{price}} $</p>
+											  </div>
+	                                        </div>  
+	                                    {{/each}}
+		                                </div>
+		                              </div>
+		                              
+		                             <div class="boder"></div>   
+		                          <h4 class="space-bootom-popup">PEOPLES MAKEUP RELATED</h4>
+		                             <div class="ui-field-contain">
+		                               <div class="row">
+		                               	{{#each getWebzine}}
+											  <div class="col-md-6">
+												   <div class="col-md-6">
+												    <img src="/upload/{{getImg image}}" class="img-responsive">
+												   </div>
+												   <div class="col-md-6 txt-sm-girls">
+												     <h4>{{title}}</h4>
+												     <small>{{{content}}}</small>
+												   </div>
+											  </div>
+										{{/each}}
+		                               </div>
+		                             <div class="boder"></div>   
+		                          <h4 class="space-bootom-popup">SUBJECT OF THE DAY</h4> 
+		                            <div class="ui-field-contain">
+		                               <div class="row">
+		                                  <div class="wrap-product-pop">
+											  	<div class="col-md-3">
+											  	  <img src="images/girls.png" class="img-responsive center-block" height="50px">
+											  	</div>
+											  	<div class="col-md-6 space_weekly">
+											  	  <h3 class="bold">WEEKLY COLOR CHALLENGE! COME JOIN!</h3>
+											  	  <p>mrsbaine / HALL OF FAMER HALL OF FAMER</p>
+											  	</div>
+											  	<div class="col-md-3 space_weekly">
+											  	 <div class="border-basic1">
+											  	  <div class="wrap-date">
+											  	    <span style="font-weight:bold; font-size:14px ;">22 reply</span><br>
+							                        <p>07-20-2015 11:16</p>
+													<a href="#" style="font-weight:bold; color:#333; margin:15px 0px"><i class="fa fa-heart"></i>	&nbsp; 03</a>
+												   </div>
+											  	 </div>
+											  	</div>
+	                                        </div>  
+		                                </div>
+		                                 <div class="row space-top-popup">
+		                                  <div class="wrap-product-pop">
+											  	<div class="col-md-3">
+											  	  <img src="images/girls.png" class="img-responsive center-block" height="50px">
+											  	</div>
+											  	<div class="col-md-6 space_weekly">
+											  	  <h3 class="bold">WEEKLY COLOR CHALLENGE! COME JOIN!</h3>
+											  	  <p>mrsbaine / HALL OF FAMER HALL OF FAMER</p>
+											  	</div>
+											  	<div class="col-md-3 space_weekly">
+											  	 <div class="border-basic1">
+											  	  <div class="wrap-date">
+											  	    <span style="font-weight:bold; font-size:14px !important;">22 reply</span><br>
+							                        <p>07-20-2015 11:16</p>
+													<a href="#" style="font-weight:bold; color:#333; margin:15px 0px"><i class="fa fa-heart"></i>	&nbsp; 03</a>
+												   </div>
+											  	 </div>
+											  	</div>
+	                                        </div>  
+		                                </div>
+		                              </div>
+		                             <div class="boder"></div>   
+		                          <h4 class="space-bootom-popup">ARTICLE OF THE DAY</h4> 
+	                           <div class="ui-field-contain">
+	                               <div class="row">
+	                               	{{#each getWebzine1}}
+										<div class="col-md-4">
+										   <img src="/upload/{{getImg image}}" class="img-responsive space-img">
+										</div>
+										<div class="col-md-6">
+										 <div class="text-artical space-text">
+										 	<h2 class="bold">{{title}}</h2>
+										 	<p class="space-arctical">{{{content}}}</p>
+										 </div> 
+										</div>
+										{{/each}}
+									  </div>
+								  </div>
+		                        </div>
+		                      </div>
+					        </div>
+					      </div>
+					   </div>	
+				<!-- end popup-->	   
+
+                       </div>
+					</div>
+				</div>
+				</div>	
+			</div>
+		</section>
+	</div>
+
+
+	<!--end popup-->
+	<script type="text/javascript">
+	    $(document).ready(function(){
+	        $('#squarespaceModal').modal('show');
+	    });
+	</script>
+</template>
