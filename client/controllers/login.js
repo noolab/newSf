@@ -45,10 +45,12 @@ Template.login.events({
 				 }
 				 else{
 
+				 	//Router.go('/dailyPopup');
 					 Router.go('/profile');
 					 $('.close').click();
 				 }
 			}
+
 		});
     },
      'click #poplogin': function(event){
@@ -58,6 +60,7 @@ Template.login.events({
 			"keyboard"  : true,
 			"show"      : true   // show the modal immediately                  
 		  });
+
     },
     'click #register': function(event){
     	event.preventDefault();
@@ -133,7 +136,8 @@ Template.login.onRendered(function(){
 			"show"      : true   // show the modal immediately                  
 		  });
 	$('#squarespaceModal').on('hidden.bs.modal', function () {
-		Router.go('/');
+		Router.go('/dailyPopup');
+		//Router.go('/');
 	})
 });
 Template.registerSuccess.onRendered(function(){
@@ -145,11 +149,13 @@ Template.registerSuccess.onRendered(function(){
 	$('#squarespaceModal').on('hidden.bs.modal', function () {
 		$('.modal-backdrop').remove();
 		Router.go('/');
+
 	})
 });
 Template.registerSuccess.events({
 	"click #goto-login": function(){
 		$('.modal-backdrop').remove();
 		Router.go('/login');
+
 	}
 });

@@ -14,53 +14,43 @@
 						  <div class="modal-dialog modal-lg">
 						    <div class="modal-content">	
 				               <div class="modal-body">
-				                <button type="button" class="close" id="x-close" data-dismiss="modal">
+				                <button type="button" class="close" data-dismiss="modal">
 					                <span aria-hidden="true">x</span>
 					                <span class="sr-only">Close</span>
 				                </button>
 					             <div class="wrap-big-popup">    
 		                          <h4>WELCOME TO SAFIR.</h4> 
-		                          <h4 class="space-bootom-popup">TRY A PRODUCT SELECTION , FOR YOUR PROFILE :</h4>    
+		                          <h4 class="space-bootom-popup">TRY A PRODUCT SELECTION , FOR YOUR PROFILE :</h4>   
+		                          	 
 		                     	     <div class="ui-field-contain">
 		                               <div class="row">
-		                               	
+		                               	{{#each getPopup}}
 		                                  <div class="wrap-product-pop">
 											  <div class="col-md-3">
-											   <img src="images/img-small1.png" class="img-responsive">
-											   <p>Rouge channel</p>
-											   <p class="price-pop">15 $</p>
+											   <img src="/upload/{{getImg image}}" class="img-responsive">
+											   <p>{{title}}</p>
+											   <p class="price-pop">{{price}} $</p>
 											  </div>
-
-											  
-
-											  
-											   
 	                                        </div>  
-	                                    
+	                                    {{/each}}
 		                                </div>
 		                              </div>
+		                              
 		                             <div class="boder"></div>   
 		                          <h4 class="space-bootom-popup">PEOPLES MAKEUP RELATED</h4>
 		                             <div class="ui-field-contain">
 		                               <div class="row">
+		                               	{{#each getWebzine}}
 											  <div class="col-md-6">
 												   <div class="col-md-6">
-												    <img src="images/girl-sm.png" class="img-responsive">
+												    <img src="/upload/{{getImg image}}" class="img-responsive">
 												   </div>
 												   <div class="col-md-6 txt-sm-girls">
-												     <h4>KYLIE JENNER</h4>
-												     <small>Kylie Jenner attends the premiere of Angeles on Tuesday, August 25th, 2015</small>
+												     <h4>{{title}}</h4>
+												     <small>{{{content}}}</small>
 												   </div>
 											  </div>
-											   <div class="col-md-6">
-												   <div class="col-md-6">
-												    <img src="images/girl-sm.png" class="img-responsive">
-												   </div>
-												   <div class="col-md-6 txt-sm-girls">
-												     <h4>KYLIE JENNER</h4>
-												     <small>Kylie Jenner attends the premiere of Angeles on Tuesday, August 25th, 2015</small>
-												   </div>
-											  </div>
+										{{/each}}
 		                               </div>
 		                             <div class="boder"></div>   
 		                          <h4 class="space-bootom-popup">SUBJECT OF THE DAY</h4> 
@@ -110,16 +100,17 @@
 		                          <h4 class="space-bootom-popup">ARTICLE OF THE DAY</h4> 
 	                           <div class="ui-field-contain">
 	                               <div class="row">
-										<div class="col-md-6">
-										   <img src="images/lip-img.png" class="img-responsive space-img">
+	                               	{{#each getWebzine1}}
+										<div class="col-md-4">
+										   <img src="/upload/{{getImg image}}" class="img-responsive space-img">
 										</div>
 										<div class="col-md-6">
 										 <div class="text-artical space-text">
-										 	<h2 class="bold">QUIZ: WHICH PEEL IS RIGHT FOR YOU?</h2>
-										 	<p class="space-arctical">Answer a few quick questions and get your antiaging on. Meet the peel treatment that will work wonders, if not miracles</p>
-										 	<p class="space-arctical">When it comes to skincare treatments, peels don’t mess around. They practically do it all: relax the look of wrinkles, balance skintone, add radiance, and redu</p>
+										 	<h2 class="bold">{{title}}</h2>
+										 	<p class="space-arctical">{{{content}}}</p>
 										 </div> 
 										</div>
+										{{/each}}
 									  </div>
 								  </div>
 		                        </div>
