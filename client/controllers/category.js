@@ -213,12 +213,12 @@ Template.listing.helpers({
 		var result;
 
 		var fils=Meteor.call('getChildrenList',category,function(err,result){
-			console.log('fils:'+result);
-			console.log('err:'+err);
+			//console.log('fils:'+result);
+			//console.log('err:'+err);
 			var finalList=result;
 			finalList.push(category);
 			Session.set('subcategories',finalList);
-			console.log('subcategories:'+Session.get('subcategories'));
+			//console.log('subcategories:'+Session.get('subcategories'));
 
 			
 		});

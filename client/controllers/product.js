@@ -119,22 +119,30 @@ Template.addproduct.events({
 			data_shop.push({shopid:shopid[i],instock:instock[i]});
 		}
 
-		var articles=Session.get('article');
-		articles=articles.split(':');
-		var listArticle=[];
-		for(var i=0;i<articles.length;i++){
-			if(articles[i]!='')
-				listArticle.push(articles[i]);
-		}
 
-		var tutoes=Session.get("totues");
-		tutoes=tutoes.split(':');
-		console.log("tutoes--"+tutoes);
-		var listTutoes=[];
-		for (var i=0;i<tutoes.length;i++){
-			if(tutoes[i]!='')
-				listTutoes.push(tutoes[i]);
+		var listArticle=[];
+		if(Session.get('article')){
+			var articles=Session.get('article');
+			articles=articles.split(':');
+			
+			for(var i=0;i<articles.length;i++){
+				if(articles[i]!='')
+					listArticle.push(articles[i]);
+			}
 		}
+		
+		var listTutoes=[];
+		if(Session.get('totues')){
+			var tutoes=Session.get("totues");
+			tutoes=tutoes.split(':');
+			console.log("tutoes--"+tutoes);
+			
+			for (var i=0;i<tutoes.length;i++){
+				if(tutoes[i]!='')
+					listTutoes.push(tutoes[i]);
+			}
+		}
+		
 
 		var data ={
 				oldId 		:oldId,
