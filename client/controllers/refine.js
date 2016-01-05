@@ -222,3 +222,15 @@ Template.myrefine.onRendered(function(){
 	});
 	
 });
+
+Template.listproducts.helpers({
+	// refine price 
+	getRefinePrice:function(){
+		// alert("Helo");
+		var min = Session.get('advanced_price_min');
+		var max = Session.get('advanced_price_max');
+		console.log('min '+min +" : max "+max);
+		var pro = products.find({price: {$gt: min, $lt: max }});
+		return pro;
+	}
+});

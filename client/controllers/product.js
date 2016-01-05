@@ -44,7 +44,7 @@ Template.addproduct.events({
 	},
 	'click #btnAdd': function(e){
 		e.preventDefault();
-		alert("bb");
+		//alert("bb");
 		var title = $('#title').val();
 		var description =CKEDITOR.instances.editor1.getData();//$('#editor1').val();// $('.froala-element').html();//froala-element
 		var price = -1;//$('#price').val();
